@@ -1,0 +1,196 @@
+[gd_scene load_steps=22 format=3 uid="uid://bqv1r4pisi436"]
+
+[ext_resource type="PackedScene" uid="uid://ddtm7e5xfx0ah" path="res://prefabs/gameplay/platforming/spring.tscn" id="2_2jps4"]
+[ext_resource type="PackedScene" uid="uid://dqxo4f716r1eq" path="res://prefabs/gameplay/platforming/platform.tscn" id="2_c7cie"]
+[ext_resource type="PackedScene" uid="uid://6jqaq8rm4vgk" path="res://prefabs/gameplay/platforming/moving_platform.tscn" id="3_8svxp"]
+[ext_resource type="PackedScene" uid="uid://cdu1t1enirmun" path="res://prefabs/gameplay/collectables/coin.tscn" id="4_534n8"]
+[ext_resource type="Script" path="res://scripts/gui/coin_display.gd" id="6_mw1rx"]
+[ext_resource type="PackedScene" uid="uid://bkfchs0j0pbwd" path="res://prefabs/gameplay/sensors/pressure_plate.tscn" id="7_fgohw"]
+[ext_resource type="Script" path="res://scripts/gui/health_display.gd" id="8_c4q25"]
+[ext_resource type="PackedScene" uid="uid://bwqrp3y7w6twl" path="res://prefabs/gameplay/collectables/health_pickup.tscn" id="8_t78yo"]
+[ext_resource type="Script" path="res://scripts/gui/ammo_display.gd" id="10_howdg"]
+[ext_resource type="PackedScene" uid="uid://cyc50o3r0y6i0" path="res://prefabs/gameplay/traps/damage_area.tscn" id="11_lp3bs"]
+[ext_resource type="PackedScene" uid="uid://bn0n7ky68rtwq" path="res://prefabs/npc/enemy_with_hat.tscn" id="12_85usn"]
+[ext_resource type="PackedScene" uid="uid://d3xk1qhglyujs" path="res://prefabs/player/fps_character.tscn" id="15_kytil"]
+[ext_resource type="PackedScene" uid="uid://dsd1h1jnod1ij" path="res://prefabs/gameplay/collectables/ammo_pickup.tscn" id="15_xqkc4"]
+[ext_resource type="PackedScene" uid="uid://cb8hyx5vsavre" path="res://prefabs/gameplay/doors.tscn" id="16_k4jp8"]
+[ext_resource type="PackedScene" uid="uid://b8u6e5oisuog0" path="res://prefabs/gameplay/collectables/diamond.tscn" id="18_a11vy"]
+[ext_resource type="PackedScene" uid="uid://dfi3n55b7i1bu" path="res://prefabs/gameplay/platforming/stairs.tscn" id="19_ct1is"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_xluy1"]
+vertices = PackedVector3Array(-0.5, 0.375, 8.75, 0.25, 0.375, 8.75, 0, 0.375, 6, -0.5, 0.375, 8.75, 0, 0.375, 6, -1.25, 0.375, 5.75, -4.5, 0.375, 8.75, -4.25, 0.625, 9.25, -0.75, 0.625, 9.25, -6, 0.375, 8.75, -4.5, 0.375, 8.75, -1.25, 0.375, 5.75, -1.25, 0.375, 4, -9.5, 0.375, 9.5, -6.25, 0.375, 9.5, -6, 0.375, 8.75, -1.25, 0.375, 4, 1, 0.375, 4, 1.25, 0.375, -9.5, -9.5, 0.375, 9.5, -6, 0.375, 8.75, -1.25, 0.375, 4, 1.25, 0.375, -9.5, -9.5, 0.375, -9.5, 0, 0.375, 6, 0.25, 0.375, 8.75, 1, 0.375, 8.75, 1.25, 0.375, 5.5, 1, 0.375, 4, 1.25, 0.375, 5.5, 9.5, 0.375, 9.5, 9.5, 0.375, -9.5, 1.25, 0.375, -9.5, 1.25, 0.375, 5.5, 1, 0.375, 8.75, 1.25, 0.375, 9.5, 9.5, 0.375, 9.5, -0.75, 0.625, 9.25, -4.25, 0.625, 9.25, -4.5, 3.875, 19.5, -0.5, 3.875, 19.5, -0.642858, 3.875, 13.6429, -4.35714, 3.875, 13.6429, -2.48999, 3.375, 12.486)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 8, 4), PackedInt32Array(4, 8, 5), PackedInt32Array(5, 8, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(15, 14, 13), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 23), PackedInt32Array(21, 23, 22), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 32), PackedInt32Array(30, 32, 31), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(39, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(41, 43, 37), PackedInt32Array(37, 43, 38), PackedInt32Array(38, 43, 42), PackedInt32Array(42, 43, 41)]
+geometry_parsed_geometry_type = 1
+agent_height = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly0vb"]
+bg_color = Color(0.137255, 0.721569, 0.113725, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ahe0k"]
+
+[sub_resource type="Sky" id="Sky_hqm4j"]
+sky_material = SubResource("ProceduralSkyMaterial_ahe0k")
+
+[sub_resource type="Environment" id="Environment_yc2cm"]
+background_mode = 2
+sky = SubResource("Sky_hqm4j")
+tonemap_mode = 2
+glow_enabled = true
+fog_sun_scatter = 0.15
+fog_density = 0.05
+
+[node name="MainScene" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_xluy1")
+
+[node name="Spring" parent="NavigationRegion3D" instance=ExtResource("2_2jps4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0600801, -0.131279, 4.86065)
+
+[node name="Platform" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -2.5)
+
+[node name="Platform2" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -2.5)
+
+[node name="Platform3" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -7.5)
+
+[node name="Platform4" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -7.5)
+
+[node name="Platform5" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -7.5)
+
+[node name="Platform6" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -7.5)
+
+[node name="Platform7" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -2.5)
+
+[node name="Platform8" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -2.5)
+
+[node name="Platform9" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 2.5)
+
+[node name="Platform10" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 2.5)
+
+[node name="Platform11" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5)
+
+[node name="Platform12" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 2.5)
+
+[node name="Platform13" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 7.5)
+
+[node name="Platform14" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 7.5)
+
+[node name="Platform17" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3.5, 17.5)
+
+[node name="Platform15" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5)
+
+[node name="Platform16" parent="NavigationRegion3D" instance=ExtResource("2_c7cie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 7.5)
+
+[node name="Stairs" parent="NavigationRegion3D" instance=ExtResource("19_ct1is")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.5, 0, 10)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70015, -0.508603, 0.501113, 0, 0.701842, 0.712332, -0.713996, -0.498739, 0.491395, 0, 4.40757, 0)
+shadow_enabled = true
+
+[node name="MovingPlatform" parent="." instance=ExtResource("3_8svxp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.51369, -1.41998, -12.5423)
+
+[node name="Coin" parent="." instance=ExtResource("4_534n8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60622, 0, -4.77573)
+
+[node name="HealthPickup" parent="." instance=ExtResource("8_t78yo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04641, 0, -1.1344)
+
+[node name="UIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinDisplay" type="Label" parent="UIRoot"]
+layout_mode = 0
+offset_right = 183.0
+offset_bottom = 86.0
+text = "Coins in stash: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_mw1rx")
+
+[node name="AmmoDisplay" type="Label" parent="UIRoot"]
+layout_mode = 0
+offset_top = 86.0
+offset_right = 183.0
+offset_bottom = 172.0
+text = "Ammo: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_howdg")
+show_max_ammo = true
+
+[node name="HealthDisplay" type="ProgressBar" parent="UIRoot"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -349.0
+offset_top = 25.0
+offset_right = -29.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ly0vb")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+script = ExtResource("8_c4q25")
+
+[node name="PressurePlate" parent="." instance=ExtResource("7_fgohw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.99548, 0, 3.44793)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yc2cm")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+cull_mask = 1048573
+
+[node name="DamageArea" parent="." instance=ExtResource("11_lp3bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30972, 0.5, -3.34014)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DamageArea"]
+size = Vector3(2, 1, 2)
+
+[node name="Enemy" parent="." instance=ExtResource("12_85usn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65562, 1, -6.22864)
+
+[node name="AmmoPickup" parent="." instance=ExtResource("15_xqkc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.03417, 0, 1.53377)
+
+[node name="Diamond" parent="." instance=ExtResource("18_a11vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72287, 0, 4.09713)
+
+[node name="FPSCharacter" parent="." instance=ExtResource("15_kytil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5166, 1.025, 7.54981)
+floor_constant_speed = false
+
+[node name="Doors" parent="." instance=ExtResource("16_k4jp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0.876486)
+
+[connection signal="deactivated" from="PressurePlate" to="Doors" method="close_door"]

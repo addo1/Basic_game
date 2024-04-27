@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyc50o3r0y6i0"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/traps/damage_area.gd" id="1_kngyl"]
+[ext_resource type="AudioStream" uid="uid://blvp3hiil46mx" path="res://audio/sfx/punch.ogg" id="2_8avmw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aosy3"]
+size = Vector3(2, 1, 2)
+
+[node name="DamageArea" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_kngyl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_aosy3")
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_8avmw")

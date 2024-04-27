@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtc88bsd6lm1c"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/victory_tracker.gd" id="1_2ipkv"]
+
+[node name="VictoryTracker" type="Node"]
+script = ExtResource("1_2ipkv")

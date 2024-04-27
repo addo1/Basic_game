@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqu6w8xlqmeay"]
+
+[ext_resource type="Script" path="res://scripts/npc/base_npc.gd" id="1_3xy52"]
+[ext_resource type="PackedScene" uid="uid://b2c8rtep58x7y" path="res://prefabs/gameplay/health.tscn" id="2_meqmj"]
+[ext_resource type="PackedScene" uid="uid://cyc50o3r0y6i0" path="res://prefabs/gameplay/traps/damage_area.tscn" id="3_va0x4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gx3j0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n5evb"]
+height = 2.1
+radius = 0.55
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 34
+collision_mask = 35
+script = ExtResource("1_3xy52")
+movement_speed = 3.0
+can_aggro = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_gx3j0")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+layers = 2
+
+[node name="Health" parent="." instance=ExtResource("2_meqmj")]
+
+[node name="DamageArea" parent="." instance=ExtResource("3_va0x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="DamageArea" index="0"]
+shape = SubResource("CylinderShape3D_n5evb")
+
+[editable path="DamageArea"]

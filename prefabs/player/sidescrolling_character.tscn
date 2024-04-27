@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqhfwn7hpy464"]
+
+[ext_resource type="PackedScene" uid="uid://civdxx5i35mqr" path="res://prefabs/player/base_character.tscn" id="1_5o1uk"]
+[ext_resource type="PackedScene" uid="uid://dorjcculloh8x" path="res://prefabs/camera/sidescrolling_player_camera.tscn" id="2_j6wt6"]
+[ext_resource type="Script" path="res://scripts/player/sidescrolling_input.gd" id="3_mse3p"]
+[ext_resource type="PackedScene" uid="uid://be6ag6h260idq" path="res://prefabs/gameplay/shooting/shooting_projectile.tscn" id="4_vyu3r"]
+[ext_resource type="PackedScene" uid="uid://b2c8rtep58x7y" path="res://prefabs/gameplay/health.tscn" id="5_rtfk8"]
+[ext_resource type="PackedScene" uid="uid://fq1cbrk0ggvd" path="res://prefabs/player/coin_stash.tscn" id="6_i0fp2"]
+
+[node name="SidescrollingCharacter" node_paths=PackedStringArray("direction_driver") instance=ExtResource("1_5o1uk")]
+axis_lock_linear_x = true
+direction_driver = NodePath("PlatformerCameraRoot")
+jump_velocity = 7
+
+[node name="PlatformerCameraRoot" parent="." index="2" instance=ExtResource("2_j6wt6")]
+camera_distance = 5
+
+[node name="Input" type="Node" parent="." index="3" node_paths=PackedStringArray("controlled_character", "shooting_node")]
+script = ExtResource("3_mse3p")
+controlled_character = NodePath("..")
+shooting_node = NodePath("../Shooting")
+
+[node name="Shooting" parent="." index="8" instance=ExtResource("4_vyu3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0446)
+
+[node name="Health" parent="." index="9" instance=ExtResource("5_rtfk8")]
+
+[node name="CoinStash" parent="." index="10" instance=ExtResource("6_i0fp2")]

@@ -1,0 +1,369 @@
+[gd_scene load_steps=27 format=3 uid="uid://c8gp2bucdsyet"]
+
+[ext_resource type="PackedScene" uid="uid://dqxo4f716r1eq" path="res://prefabs/gameplay/platforming/platform.tscn" id="1_6rtxs"]
+[ext_resource type="PackedScene" uid="uid://dqhfwn7hpy464" path="res://prefabs/player/sidescrolling_character.tscn" id="2_k5yv2"]
+[ext_resource type="PackedScene" uid="uid://cyc50o3r0y6i0" path="res://prefabs/gameplay/traps/damage_area.tscn" id="3_7q3bl"]
+[ext_resource type="Shader" uid="uid://bth61ilbn5nqm" path="res://shaders/lava_shader.tres" id="4_w765x"]
+[ext_resource type="Material" uid="uid://c2aotiivrdtm0" path="res://materials/fireball_material.tres" id="5_djt6p"]
+[ext_resource type="PackedScene" uid="uid://ddtm7e5xfx0ah" path="res://prefabs/gameplay/platforming/spring.tscn" id="6_6jxtv"]
+[ext_resource type="PackedScene" uid="uid://6jqaq8rm4vgk" path="res://prefabs/gameplay/platforming/moving_platform.tscn" id="7_ylnjc"]
+[ext_resource type="PackedScene" uid="uid://wm2wrxgr4gx7" path="res://prefabs/npc/patroling_sidescroll_enemy.tscn" id="8_viodn"]
+[ext_resource type="PackedScene" uid="uid://bkfchs0j0pbwd" path="res://prefabs/gameplay/sensors/pressure_plate.tscn" id="9_vvev0"]
+[ext_resource type="PackedScene" uid="uid://b8u6e5oisuog0" path="res://prefabs/gameplay/collectables/diamond.tscn" id="10_635rs"]
+[ext_resource type="PackedScene" uid="uid://dtc88bsd6lm1c" path="res://prefabs/gameplay/victory_tracker.tscn" id="14_xuive"]
+[ext_resource type="PackedScene" uid="uid://lju1rkkpsl77" path="res://prefabs/gameplay/victory_screen.tscn" id="15_v2242"]
+[ext_resource type="PackedScene" uid="uid://bcq82mguj4by5" path="res://prefabs/gameplay/loss_screen.tscn" id="16_rx7a5"]
+[ext_resource type="PackedScene" uid="uid://k2n55j546a1y" path="res://prefabs/gameplay/loss_tracker.tscn" id="17_nl0th"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wjpbx"]
+size = Vector3(2, 1, 4.94727)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfqfu"]
+render_priority = 0
+shader = ExtResource("4_w765x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ucnqf"]
+emission_shape = 3
+emission_box_extents = Vector3(2.35, 1, 2)
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_min = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_jlmnn"]
+material = ExtResource("5_djt6p")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wh6rk"]
+size = Vector3(2, 1, 4.94531)
+
+[sub_resource type="Curve3D" id="Curve3D_6uoyq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_s5f33"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_sbdgy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -15, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jop1w"]
+vertices = PackedVector3Array(-2, 2.90639, 142.585, -2, 2.90639, 156.585, 2, 2.90639, 156.585, 2, 2.90639, 142.585)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lplos"]
+
+[sub_resource type="Sky" id="Sky_b1k2j"]
+sky_material = SubResource("ProceduralSkyMaterial_lplos")
+
+[sub_resource type="Environment" id="Environment_4ov7f"]
+background_mode = 2
+sky = SubResource("Sky_b1k2j")
+
+[node name="PlatformerLevel" type="Node3D"]
+
+[node name="SidescrollingCharacter" parent="." instance=ExtResource("2_k5yv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.025, -4.29686)
+
+[node name="Shooting" parent="SidescrollingCharacter" index="8"]
+current_ammo = 0
+
+[node name="DamageArea" parent="." instance=ExtResource("3_7q3bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.975, 55.583)
+
+[node name="CollisionShape3D" parent="DamageArea" index="0"]
+shape = SubResource("BoxShape3D_wjpbx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DamageArea"]
+size = Vector3(4.76855, 1, 5.00195)
+material = SubResource("ShaderMaterial_xfqfu")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="DamageArea"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_ucnqf")
+draw_pass_1 = SubResource("SphereMesh_jlmnn")
+
+[node name="DamageArea2" parent="." instance=ExtResource("3_7q3bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.975, 65.5991)
+
+[node name="CollisionShape3D" parent="DamageArea2" index="0"]
+shape = SubResource("BoxShape3D_wh6rk")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DamageArea2"]
+size = Vector3(4.76855, 1, 5.00195)
+material = SubResource("ShaderMaterial_xfqfu")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="DamageArea2"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_ucnqf")
+draw_pass_1 = SubResource("SphereMesh_jlmnn")
+
+[node name="Spring" parent="." instance=ExtResource("6_6jxtv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.51305, 95.9322)
+
+[node name="Spring2" parent="." instance=ExtResource("6_6jxtv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.51305, 103.932)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("7_ylnjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93087, 104.585)
+curve = SubResource("Curve3D_6uoyq")
+is_moving = true
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("7_ylnjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.931, 134.585)
+curve = SubResource("Curve3D_s5f33")
+speed = 7.5
+is_moving = true
+
+[node name="PatrolPoint0" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54386, 143.46)
+top_level = true
+
+[node name="PatrolPoint1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54386, 155.203)
+top_level = true
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_viodn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54386, 155.146)
+axis_lock_linear_x = true
+is_patrolling = true
+patrol_points = [NodePath("../PatrolPoint0"), NodePath("../PatrolPoint1")]
+
+[node name="PressurePlate" parent="." instance=ExtResource("9_vvev0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.665, 169.551)
+
+[node name="MovingPlatform3" parent="." instance=ExtResource("7_ylnjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.418, 174.618)
+curve = SubResource("Curve3D_sbdgy")
+loop_count = 1
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="Platform" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+
+[node name="Platform5" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform6" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Platform8" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="Platform9" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+
+[node name="Platform10" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="Platform11" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 35)
+
+[node name="Platform12" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+
+[node name="Platform15" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.362618, -2.27946, 49)
+
+[node name="Platform14" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.5846)
+
+[node name="Platform16" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 55.5846)
+
+[node name="Platform17" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60.5846)
+
+[node name="Platform18" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 65.5846)
+
+[node name="Platform19" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 70.5846)
+
+[node name="Platform21" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 79.5846)
+
+[node name="Platform22" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 84.5846)
+
+[node name="Platform23" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 89.5846)
+
+[node name="Platform24" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 94.5846)
+
+[node name="Platform25" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501239, 99.5846)
+
+[node name="Platform27" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36709, 99.5846)
+
+[node name="Platform26" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 99.5846)
+
+[node name="Platform28" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 104.585)
+
+[node name="Platform29" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 109.585)
+
+[node name="Platform30" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 114.585)
+
+[node name="Platform31" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 119.585)
+
+[node name="Platform32" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 124.585)
+
+[node name="Platform33" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 129.585)
+
+[node name="Platform34" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 134.585)
+
+[node name="Platform35" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36007, 139.585)
+
+[node name="Platform36" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.518861, 139.585)
+
+[node name="Platform41" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.51886, 159.585)
+
+[node name="Platform42" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64007, 159.585)
+
+[node name="Platform43" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64007, 164.585)
+
+[node name="Platform44" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64007, 169.585)
+
+[node name="Platform45" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05618, 174.585)
+
+[node name="Platform46" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.943819, 179.585)
+
+[node name="Platform47" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84395, 179.585)
+
+[node name="Platform48" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.70739, 179.585)
+
+[node name="Platform49" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.58694, 179.585)
+
+[node name="Platform50" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4249, 179.585)
+
+[node name="Platform51" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.3378, 179.584)
+
+[node name="Platform52" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.1682, 179.585)
+
+[node name="Platform53" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.1682, 184.585)
+
+[node name="Platform54" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.1682, 189.585)
+
+[node name="Platform55" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.1682, 194.585)
+
+[node name="Platform56" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.1682, 199.585)
+
+[node name="Platform57" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.0143, 199.585)
+
+[node name="Platform58" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.8699, 199.585)
+
+[node name="Platform37" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.34268, 139.585)
+
+[node name="Platform13" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 0.924626, -0.380877, 0, 0.380877, 0.924626, 0.15401, -1.52032, 44.7603)
+
+[node name="Platform20" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 0.924626, -0.380877, 0, 0.380877, 0.924626, 0.15401, -1.52032, 75.2157)
+
+[node name="Platform7" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.891315, 15)
+
+[node name="Platform2" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Platform3" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Platform4" parent="LevelGeometry" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, -10)
+
+[node name="EnemyPatrolLocation" type="NavigationRegion3D" parent="LevelGeometry"]
+navigation_mesh = SubResource("NavigationMesh_jop1w")
+
+[node name="Platform38" parent="LevelGeometry/EnemyPatrolLocation" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51886, 144.585)
+
+[node name="Platform39" parent="LevelGeometry/EnemyPatrolLocation" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51886, 149.585)
+
+[node name="Platform40" parent="LevelGeometry/EnemyPatrolLocation" instance=ExtResource("1_6rtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51886, 154.585)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_4ov7f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.152365, 0.645452, -0.748449, 0, 0.757291, 0.653077, 0.988324, -0.0995062, 0.115385, -11.7437, 8.58483, 0.814813)
+
+[node name="Diamond" parent="." instance=ExtResource("10_635rs")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 18.193, 192.077)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.6579, 192.19)
+light_color = Color(0.219608, 0.741176, 1, 1)
+light_energy = 3.227
+omni_range = 9.39685
+
+[node name="VictoryTracker" parent="." node_paths=PackedStringArray("player", "victory_screen") instance=ExtResource("14_xuive")]
+player = NodePath("../SidescrollingCharacter")
+victory_screen = NodePath("../VictoryScreen")
+
+[node name="VictoryScreen" parent="." instance=ExtResource("15_v2242")]
+
+[node name="LossScreen" parent="." instance=ExtResource("16_rx7a5")]
+
+[node name="LossTracker" parent="." node_paths=PackedStringArray("player", "loss_screen") instance=ExtResource("17_nl0th")]
+player = NodePath("../SidescrollingCharacter")
+loss_screen = NodePath("../LossScreen")
+
+[connection signal="died" from="SidescrollingCharacter/Health" to="LossTracker" method="trigger_loss"]
+[connection signal="activated" from="PressurePlate" to="MovingPlatform3" method="start_platform"]
+[connection signal="collected" from="Diamond" to="VictoryTracker" method="trigger_victory"]
+
+[editable path="SidescrollingCharacter"]
+[editable path="DamageArea"]
+[editable path="DamageArea2"]
+[editable path="Diamond"]

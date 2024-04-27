@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://ca43wiygg0xsx"]
+
+[ext_resource type="Texture2D" uid="uid://dbscn3bwtunhy" path="res://geometry/medieval/M_GoldCoin_BaseColor.png" id="1_knuoy"]
+[ext_resource type="Texture2D" uid="uid://dg7muuqspwhlw" path="res://geometry/medieval/M_GoldCoin_Normal.png" id="2_eux63"]
+[ext_resource type="Texture2D" uid="uid://bwb40m1s1jdfr" path="res://geometry/medieval/M_GoldCoin_OcclusionRoughnessMetallic.png" id="3_mu7ji"]
+
+[resource]
+albedo_texture = ExtResource("1_knuoy")
+orm_texture = ExtResource("3_mu7ji")
+normal_enabled = true
+normal_texture = ExtResource("2_eux63")

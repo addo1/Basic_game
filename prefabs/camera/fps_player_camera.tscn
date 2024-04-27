@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnb3qrlyikcnj"]
+
+[ext_resource type="Script" path="res://scripts/camera/player_camera.gd" id="1_2t7bg"]
+
+[node name="FPSCameraRoot" type="Node3D"]
+top_level = true
+script = ExtResource("1_2t7bg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+cull_mask = 1048511
+fov = 90.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true

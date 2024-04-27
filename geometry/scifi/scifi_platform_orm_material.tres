@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://cgqritq0u1mpp"]
+
+[ext_resource type="Texture2D" uid="uid://bowec6my1sf1g" path="res://geometry/scifi/M_Platform_BaseColor.png" id="1_igvv1"]
+[ext_resource type="Texture2D" uid="uid://w8gwaywl1xb0" path="res://geometry/scifi/M_Platform_Normal.png" id="2_tscpg"]
+[ext_resource type="Texture2D" uid="uid://28uixmttscyb" path="res://geometry/scifi/M_Platform_OcclusionRoughnessMetallic.png" id="3_igx5w"]
+
+[resource]
+albedo_texture = ExtResource("1_igvv1")
+orm_texture = ExtResource("3_igx5w")
+normal_enabled = true
+normal_texture = ExtResource("2_tscpg")

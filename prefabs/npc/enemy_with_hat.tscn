@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn0n7ky68rtwq"]
+
+[ext_resource type="PackedScene" uid="uid://def4b1wtgcddf" path="res://prefabs/npc/base_enemy.tscn" id="1_gptnj"]
+[ext_resource type="PackedScene" uid="uid://b2c8rtep58x7y" path="res://prefabs/gameplay/health.tscn" id="2_ycku2"]
+[ext_resource type="PackedScene" uid="uid://cxuisvx1e5p2u" path="res://prefabs/npc/enemy_hat.tscn" id="3_diu61"]
+
+[node name="Enemy" instance=ExtResource("1_gptnj")]
+
+[node name="Health" parent="." index="3" instance=ExtResource("2_ycku2")]
+
+[node name="Hat" parent="." index="4" instance=ExtResource("3_diu61")]

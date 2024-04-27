@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciobgnxodk076"]
+
+[ext_resource type="Script" path="res://scripts/camera/player_camera.gd" id="1_ewe05"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bhow0"]
+radius = 0.2
+
+[node name="3rdPersonCameraRoot" type="Node3D"]
+top_level = true
+script = ExtResource("1_ewe05")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_bhow0")
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+fov = 90.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="SpringArm3D/Camera3D"]
+current = true

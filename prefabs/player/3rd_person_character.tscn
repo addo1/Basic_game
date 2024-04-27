@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxyt3aiqwfxwa"]
+
+[ext_resource type="PackedScene" uid="uid://civdxx5i35mqr" path="res://prefabs/player/base_character.tscn" id="1_indmp"]
+[ext_resource type="PackedScene" uid="uid://ciobgnxodk076" path="res://prefabs/camera/3rd_person_player_camera.tscn" id="2_sgduv"]
+[ext_resource type="Script" path="res://scripts/player/3d_character_input.gd" id="3_rjbmh"]
+[ext_resource type="PackedScene" uid="uid://b2c8rtep58x7y" path="res://prefabs/gameplay/health.tscn" id="4_rob6b"]
+[ext_resource type="PackedScene" uid="uid://be6ag6h260idq" path="res://prefabs/gameplay/shooting/shooting_projectile.tscn" id="5_g04x4"]
+[ext_resource type="PackedScene" uid="uid://fq1cbrk0ggvd" path="res://prefabs/player/coin_stash.tscn" id="6_556lu"]
+
+[node name="ThirdPersonCharacter" node_paths=PackedStringArray("direction_driver") instance=ExtResource("1_indmp")]
+direction_driver = NodePath("3rdPersonCameraRoot")
+
+[node name="CSGCylinder3D" parent="." index="1"]
+layers = 2
+
+[node name="CSGCylinder3D" parent="CSGCylinder3D" index="0"]
+layers = 2
+
+[node name="3rdPersonCameraRoot" parent="." index="2" instance=ExtResource("2_sgduv")]
+
+[node name="Input" type="Node" parent="." index="3" node_paths=PackedStringArray("controlled_character", "shooting_node", "camera")]
+script = ExtResource("3_rjbmh")
+controlled_character = NodePath("..")
+shooting_node = NodePath("../Shooting")
+camera = NodePath("../3rdPersonCameraRoot")
+
+[node name="Health" parent="." index="4" instance=ExtResource("4_rob6b")]
+
+[node name="Shooting" parent="." index="9" instance=ExtResource("5_g04x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.15184)
+
+[node name="CoinStash" parent="." index="10" instance=ExtResource("6_556lu")]

@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://bvh5tj4gd2lsu"]
+
+[ext_resource type="Texture2D" uid="uid://0dejy13im2ks" path="res://geometry/medieval/M_Ball_BaseColor.png" id="1_b3d5f"]
+[ext_resource type="Texture2D" uid="uid://b7wwmkrc43xd6" path="res://geometry/medieval/M_Ball_Normal.png" id="2_j318f"]
+[ext_resource type="Texture2D" uid="uid://da6c46renw2rj" path="res://geometry/medieval/M_Ball_OcclusionRoughnessMetallic.png" id="3_qjt34"]
+
+[resource]
+albedo_texture = ExtResource("1_b3d5f")
+orm_texture = ExtResource("3_qjt34")
+normal_enabled = true
+normal_texture = ExtResource("2_j318f")

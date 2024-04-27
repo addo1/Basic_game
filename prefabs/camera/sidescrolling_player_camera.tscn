@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dorjcculloh8x"]
+
+[ext_resource type="Script" path="res://scripts/camera/sidescrolling_camera.gd" id="1_iiqgs"]
+
+[node name="PlatformerCameraRoot" type="Node3D"]
+top_level = true
+script = ExtResource("1_iiqgs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
+fov = 90.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true

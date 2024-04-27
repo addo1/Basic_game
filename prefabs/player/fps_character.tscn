@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3xk1qhglyujs"]
+
+[ext_resource type="PackedScene" uid="uid://civdxx5i35mqr" path="res://prefabs/player/base_character.tscn" id="1_sp3sl"]
+[ext_resource type="PackedScene" uid="uid://dnb3qrlyikcnj" path="res://prefabs/camera/fps_player_camera.tscn" id="2_sy5w8"]
+[ext_resource type="Script" path="res://scripts/player/3d_character_input.gd" id="3_4ofte"]
+[ext_resource type="PackedScene" uid="uid://dfdebsk7whaun" path="res://prefabs/gameplay/shooting/shooting_hit_scan.tscn" id="4_ypnik"]
+[ext_resource type="PackedScene" uid="uid://fq1cbrk0ggvd" path="res://prefabs/player/coin_stash.tscn" id="5_wdddl"]
+[ext_resource type="PackedScene" uid="uid://b2c8rtep58x7y" path="res://prefabs/gameplay/health.tscn" id="6_grrvf"]
+
+[node name="FPSCharacter" node_paths=PackedStringArray("direction_driver") instance=ExtResource("1_sp3sl")]
+direction_driver = NodePath("FPSCameraRoot")
+rotate_with_velocity = false
+rotate_with_direction_driver = true
+
+[node name="FPSCameraRoot" parent="." index="2" instance=ExtResource("2_sy5w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699728, 0)
+
+[node name="Input" type="Node" parent="." index="3" node_paths=PackedStringArray("controlled_character", "shooting_node", "camera")]
+script = ExtResource("3_4ofte")
+controlled_character = NodePath("..")
+shooting_node = NodePath("../Shooting")
+camera = NodePath("../FPSCameraRoot")
+
+[node name="Shooting" parent="." index="8" node_paths=PackedStringArray("custom_shot_origin_transform") instance=ExtResource("4_ypnik")]
+infinite_ammo = true
+shooting_rate = 0.1
+automatic = true
+custom_shot_origin_transform = NodePath("../FPSCameraRoot/Camera3D")
+
+[node name="CoinStash" parent="." index="9" instance=ExtResource("5_wdddl")]
+
+[node name="Health" parent="." index="10" instance=ExtResource("6_grrvf")]
+
+[editable path="FPSCameraRoot"]

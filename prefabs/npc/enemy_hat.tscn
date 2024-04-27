@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxuisvx1e5p2u"]
+
+[ext_resource type="Script" path="res://scripts/npc/enemy_hat.gd" id="1_t4j54"]
+[ext_resource type="AudioStream" uid="uid://blvp3hiil46mx" path="res://audio/sfx/punch.ogg" id="2_s5lw7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mc2m6"]
+height = 0.25
+
+[node name="Hat" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10295, 0)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_t4j54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_mc2m6")
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_s5lw7")

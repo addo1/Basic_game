@@ -1,0 +1,1056 @@
+[gd_scene load_steps=21 format=3 uid="uid://cb8fdfc7mi3im"]
+
+[ext_resource type="PackedScene" uid="uid://d3xk1qhglyujs" path="res://prefabs/player/fps_character.tscn" id="1_jckhq"]
+[ext_resource type="PackedScene" uid="uid://dfi3n55b7i1bu" path="res://prefabs/gameplay/platforming/stairs.tscn" id="2_ro7tn"]
+[ext_resource type="PackedScene" uid="uid://dqxo4f716r1eq" path="res://prefabs/gameplay/platforming/platform.tscn" id="3_d4xj4"]
+[ext_resource type="PackedScene" uid="uid://cdu1t1enirmun" path="res://prefabs/gameplay/collectables/coin.tscn" id="4_kcykc"]
+[ext_resource type="PackedScene" uid="uid://cyc50o3r0y6i0" path="res://prefabs/gameplay/traps/damage_area.tscn" id="5_73ifl"]
+[ext_resource type="Shader" uid="uid://bth61ilbn5nqm" path="res://shaders/lava_shader.tres" id="6_h3a2d"]
+[ext_resource type="Material" uid="uid://c2aotiivrdtm0" path="res://materials/fireball_material.tres" id="7_cmwmj"]
+[ext_resource type="PackedScene" uid="uid://b8u6e5oisuog0" path="res://prefabs/gameplay/collectables/diamond.tscn" id="8_kgh5e"]
+[ext_resource type="PackedScene" uid="uid://ddtm7e5xfx0ah" path="res://prefabs/gameplay/platforming/spring.tscn" id="9_xw6ls"]
+[ext_resource type="PackedScene" uid="uid://cb8hyx5vsavre" path="res://prefabs/gameplay/doors.tscn" id="10_a75pu"]
+[ext_resource type="PackedScene" uid="uid://dqu6w8xlqmeay" path="res://prefabs/npc/fps_enemy.tscn" id="11_3v4wg"]
+[ext_resource type="PackedScene" uid="uid://6jqaq8rm4vgk" path="res://prefabs/gameplay/platforming/moving_platform.tscn" id="12_c1rjq"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cvtkw"]
+energy_multiplier = 3.0
+
+[sub_resource type="Sky" id="Sky_vt40p"]
+sky_material = SubResource("PhysicalSkyMaterial_cvtkw")
+
+[sub_resource type="Environment" id="Environment_tcnig"]
+background_mode = 2
+sky = SubResource("Sky_vt40p")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xurab"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3mvf"]
+render_priority = 0
+shader = ExtResource("6_h3a2d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g5irn"]
+emission_shape = 3
+emission_box_extents = Vector3(2.35, 1, 2)
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_min = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_0jh6g"]
+material = ExtResource("7_cmwmj")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Curve3D" id="Curve3D_xuna8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -16, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tcnig")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.795812, 0.464755, -0.388183, 0.201517, 0.401248, 0.893527, 0.571029, -0.789305, 0.225662, 0, 10.2314, 0)
+light_color = Color(0.215686, 0.14902, 0.105882, 1)
+light_volumetric_fog_energy = 16.0
+light_angular_distance = 51.67
+shadow_enabled = true
+shadow_normal_bias = 4.121
+shadow_blur = 6.252
+sky_mode = 1
+
+[node name="FPSCharacter" parent="." instance=ExtResource("1_jckhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.025, 0)
+
+[node name="Stairs2" parent="." instance=ExtResource("2_ro7tn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.27875, 0.0249999, 14.9512)
+
+[node name="Platform2" parent="." instance=ExtResource("3_d4xj4")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -66, 28, 9)
+
+[node name="Maze" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="Platform2" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
+
+[node name="Platform3" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="Platform4" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="Platform5" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
+
+[node name="Platform6" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="Platform7" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="Platform8" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 5)
+
+[node name="Platform9" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 5)
+
+[node name="Platform10" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 5)
+
+[node name="Platform11" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
+
+[node name="Platform12" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -5)
+
+[node name="Platform13" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -10)
+
+[node name="Platform14" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -15)
+
+[node name="Platform15" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -15)
+
+[node name="Platform16" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -15)
+
+[node name="Platform17" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+
+[node name="Platform18" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -5)
+
+[node name="Platform19" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -5)
+
+[node name="Platform20" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -5)
+
+[node name="Platform21" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -5)
+
+[node name="Platform22" parent="Maze" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -5)
+
+[node name="Ground" parent="." instance=ExtResource("3_d4xj4")]
+
+[node name="Platform" parent="Ground" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Ground" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Ground/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Ground/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Ground/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Ground/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Ground/Platform2/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform2/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform3" parent="Ground" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Platform" parent="Ground/Platform3" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Ground/Platform3" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Ground/Platform3/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Ground/Platform3/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Ground/Platform3/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Ground/Platform3/Platform2/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Leftwall" parent="." instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.43946, -5.30977)
+
+[node name="Platform7" parent="Leftwall" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Leftwall" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Leftwall/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform9" parent="Leftwall" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Platform7" parent="Leftwall/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Leftwall/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Leftwall/Platform9/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Rightwall" parent="." instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.43946, 19.6902)
+
+[node name="Platform7" parent="Rightwall" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Rightwall" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Rightwall/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform9" parent="Rightwall" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Platform7" parent="Rightwall/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Rightwall/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Rightwall/Platform9/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Outerwalls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0825, 2.425, 4.96943)
+
+[node name="Platform137" parent="Outerwalls" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, 12.69)
+
+[node name="Platform138" parent="Outerwalls" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, 7.69)
+
+[node name="Platform139" parent="Outerwalls" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, 2.69)
+
+[node name="Platform140" parent="Outerwalls" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, -2.31)
+
+[node name="Platform141" parent="Outerwalls" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, -7.31)
+
+[node name="Platform142" parent="Outerwalls" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, -7.31)
+
+[node name="Jumpblocks" type="Node3D" parent="."]
+
+[node name="Platform48" parent="Jumpblocks" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.2787, 2.9, 14.9512)
+
+[node name="Platform49" parent="Jumpblocks" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.2787, 2.9, 14.9512)
+
+[node name="Platform50" parent="Jumpblocks" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 32.2787, 2.9, 14.9512)
+
+[node name="Platform51" parent="Jumpblocks" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 32.2787, 2.9, 4.9512)
+
+[node name="Platform52" parent="Jumpblocks" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.2787, 2.9, 4.9512)
+
+[node name="Platform53" parent="Jumpblocks" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.2787, 2.9, 4.9512)
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="Coin3" parent="Coins" instance=ExtResource("4_kcykc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0825, 2.425, 14.9694)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("4_kcykc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0825, 2.425, 14.9694)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("4_kcykc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0825, 2.425, 14.9694)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("4_kcykc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0825, 2.425, 4.96943)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("4_kcykc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0825, 2.425, 4.96943)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("4_kcykc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0825, 2.425, 4.96943)
+
+[node name="Damagearea" type="Node3D" parent="."]
+
+[node name="DamageArea2" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 0)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea2" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea2"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea2"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea6" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, 0)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea6" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea6"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea6"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea7" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, 0)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea7" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea7"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea7"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea8" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, 5)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea8" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea8"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea8"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea9" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, 10)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea9" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea9"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea9"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea10" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, 10)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea10" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea10"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea10"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea11" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, 15)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea11" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea11"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea11"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea12" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, 5)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea12" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea12"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea12"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea16" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, 20)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea16" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea16"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea16"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea17" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, 20)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea17" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea17"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea17"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea18" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, 15)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea18" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea18"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea18"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea19" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, 5)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea19" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea19"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea19"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea20" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, 0)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea20" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea20"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea20"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea22" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -1, -5)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea22" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea22"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea22"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea25" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, 25)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea25" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea25"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea25"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea26" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, 25)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea26" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea26"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea26"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea27" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -1, 25)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea27" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea27"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea27"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea31" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, 15)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea31" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea31"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea31"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea32" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, 5)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea32" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea32"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea32"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea33" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -1, 5)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea33" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea33"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea33"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea34" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, -1, 5)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea34" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea34"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea34"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea35" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, -1, 15)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea35" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea35"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea35"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea36" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -1, 15)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea36" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea36"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea36"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea37" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -1, 15)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea37" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea37"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea37"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea3" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 20)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea3" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea3"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea3"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea4" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 15)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea4" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea4"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea4"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="DamageArea5" parent="Damagearea" instance=ExtResource("5_73ifl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 10)
+
+[node name="CollisionShape3D" parent="Damagearea/DamageArea5" index="0"]
+shape = SubResource("BoxShape3D_xurab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Damagearea/DamageArea5"]
+size = Vector3(5, 1, 5)
+material = SubResource("ShaderMaterial_u3mvf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Damagearea/DamageArea5"]
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g5irn")
+draw_pass_1 = SubResource("SphereMesh_0jh6g")
+
+[node name="Diamond" parent="." instance=ExtResource("8_kgh5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.29, -0.475, -5.129)
+
+[node name="Spring" parent="." instance=ExtResource("9_xw6ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.0601, 0.0250001, 9.86065)
+spring_velocity = 30
+
+[node name="Doors" parent="." instance=ExtResource("10_a75pu")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -2.3872, 0.159485, 5.1802)
+start_open = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Leftwall2" parent="Node3D" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -167, 27.4395, -5.30977)
+
+[node name="Platform7" parent="Node3D/Leftwall2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Node3D/Leftwall2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Node3D/Leftwall2/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform9" parent="Node3D/Leftwall2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Platform7" parent="Node3D/Leftwall2/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Node3D/Leftwall2/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Node3D/Leftwall2/Platform9/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Rightwall2" parent="Node3D" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -167, 27.4395, 19.6902)
+
+[node name="Platform7" parent="Node3D/Rightwall2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Node3D/Rightwall2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Node3D/Rightwall2/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform9" parent="Node3D/Rightwall2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Platform7" parent="Node3D/Rightwall2/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform8" parent="Node3D/Rightwall2/Platform9" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Platform7" parent="Node3D/Rightwall2/Platform9/Platform8" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Outerwalls2" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.917, 27.425, 4.96943)
+
+[node name="Platform137" parent="Node3D/Outerwalls2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, 12.69)
+
+[node name="Platform138" parent="Node3D/Outerwalls2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, 7.69)
+
+[node name="Platform139" parent="Node3D/Outerwalls2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, 2.69)
+
+[node name="Platform140" parent="Node3D/Outerwalls2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, -2.31)
+
+[node name="Platform141" parent="Node3D/Outerwalls2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, -7.31)
+
+[node name="Platform142" parent="Node3D/Outerwalls2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 25.5, 0.0999999, -7.31)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149, 26.075, 18)
+
+[node name="Ground2" parent="Node3D/NavigationRegion3D" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -1.075, -18)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Node3D/NavigationRegion3D/Ground2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Node3D/NavigationRegion3D/Ground2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform2/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform3" parent="Node3D/NavigationRegion3D/Ground2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Node3D/NavigationRegion3D/Ground2/Platform3" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform2" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2/Platform2" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2/Platform2/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2/Platform2/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Platform" parent="Node3D/NavigationRegion3D/Ground2/Platform3/Platform2/Platform2/Platform2/Platform/Platform/Platform" instance=ExtResource("3_d4xj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Enemy" parent="Node3D" instance=ExtResource("11_3v4wg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149, 26.075, 18)
+aggro_range = 16.0
+
+[node name="Enemy2" parent="Node3D" instance=ExtResource("11_3v4wg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.06, 26.075, 10.8607)
+aggro_range = 16.0
+
+[node name="MovingPlatform" parent="." instance=ExtResource("12_c1rjq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -81, 24, 9)
+curve = SubResource("Curve3D_xuna8")
+is_moving = true
+
+[editable path="Damagearea/DamageArea2"]
+[editable path="Damagearea/DamageArea6"]
+[editable path="Damagearea/DamageArea7"]
+[editable path="Damagearea/DamageArea8"]
+[editable path="Damagearea/DamageArea9"]
+[editable path="Damagearea/DamageArea10"]
+[editable path="Damagearea/DamageArea11"]
+[editable path="Damagearea/DamageArea12"]
+[editable path="Damagearea/DamageArea16"]
+[editable path="Damagearea/DamageArea17"]
+[editable path="Damagearea/DamageArea18"]
+[editable path="Damagearea/DamageArea19"]
+[editable path="Damagearea/DamageArea20"]
+[editable path="Damagearea/DamageArea22"]
+[editable path="Damagearea/DamageArea25"]
+[editable path="Damagearea/DamageArea26"]
+[editable path="Damagearea/DamageArea27"]
+[editable path="Damagearea/DamageArea31"]
+[editable path="Damagearea/DamageArea32"]
+[editable path="Damagearea/DamageArea33"]
+[editable path="Damagearea/DamageArea34"]
+[editable path="Damagearea/DamageArea35"]
+[editable path="Damagearea/DamageArea36"]
+[editable path="Damagearea/DamageArea37"]
+[editable path="Damagearea/DamageArea3"]
+[editable path="Damagearea/DamageArea4"]
+[editable path="Damagearea/DamageArea5"]
+[editable path="Node3D/Enemy"]
+[editable path="Node3D/Enemy/DamageArea"]
+[editable path="Node3D/Enemy2"]
+[editable path="Node3D/Enemy2/DamageArea"]

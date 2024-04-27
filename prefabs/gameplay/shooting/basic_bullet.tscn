@@ -1,0 +1,109 @@
+[gd_scene load_steps=19 format=3 uid="uid://btdfq5ki707yr"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/shooting/bullet.gd" id="1_k6sb5"]
+[ext_resource type="Material" uid="uid://c2aotiivrdtm0" path="res://materials/fireball_material.tres" id="2_7on74"]
+[ext_resource type="AudioStream" uid="uid://b723x7ge25gdg" path="res://audio/sfx/fireball_hit.ogg" id="3_vj2ew"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x6le2"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1bdn2"]
+radius = 0.25
+
+[sub_resource type="Gradient" id="Gradient_6csgs"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tg2um"]
+gradient = SubResource("Gradient_6csgs")
+
+[sub_resource type="Curve" id="Curve_iig5w"]
+_data = [Vector2(0, 1), 0.0, 0.124711, 0, 0, Vector2(1, 0), -2.07878, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qyouk"]
+curve = SubResource("Curve_iig5w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ck8ml"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_qyouk")
+color_ramp = SubResource("GradientTexture1D_tg2um")
+
+[sub_resource type="SphereMesh" id="SphereMesh_flyxu"]
+material = ExtResource("2_7on74")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Gradient" id="Gradient_n87vk"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sxasv"]
+gradient = SubResource("Gradient_n87vk")
+
+[sub_resource type="Curve" id="Curve_7d0y6"]
+_data = [Vector2(0, 1), 0.0, -2.59341, 0, 0, Vector2(1, 0), -0.0489917, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_66nuu"]
+curve = SubResource("Curve_7d0y6")
+
+[sub_resource type="Curve" id="Curve_t7wx4"]
+_data = [Vector2(0, 1), 0.0, 0.124711, 0, 0, Vector2(1, 0), -2.07878, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2y7mb"]
+curve = SubResource("Curve_t7wx4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oyoo8"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 0, 0)
+radial_velocity_min = 8.0
+radial_velocity_max = 16.0
+radial_velocity_curve = SubResource("CurveTexture_66nuu")
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_2y7mb")
+color_ramp = SubResource("GradientTexture1D_sxasv")
+
+[node name="BasicBullet" type="RigidBody3D"]
+collision_layer = 33
+collision_mask = 33
+physics_material_override = SubResource("PhysicsMaterial_x6le2")
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_k6sb5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1bdn2")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+cast_shadow = 0
+radius = 0.25
+material = ExtResource("2_7on74")
+
+[node name="IdleParticles" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+amount = 32
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ck8ml")
+draw_pass_1 = SubResource("SphereMesh_flyxu")
+
+[node name="HitParticles" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_oyoo8")
+draw_pass_1 = SubResource("SphereMesh_flyxu")
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_vj2ew")

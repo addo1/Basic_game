@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://k2n55j546a1y"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/loss_tracker.gd" id="1_031fa"]
+
+[node name="LossTracker" type="Node"]
+script = ExtResource("1_031fa")
