@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://vpi3uqec3w1e"]
+
+[ext_resource type="PackedScene" uid="uid://b5q3aldabki0y" path="res://geometry/medieval/raw/monster.glb" id="1_cnii4"]
+
+[node name="monster" instance=ExtResource("1_cnii4")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0370073, 2.45048e-05, 0.000994927, 0.999314)
+bones/4/rotation = Quaternion(-0.625286, 0.316239, 0.676226, 0.227437)
+bones/5/rotation = Quaternion(-0.257873, 0.0756205, -0.0770608, 0.960127)
+bones/6/rotation = Quaternion(0.0101268, -0.0134884, 0.000272002, 0.999858)
+bones/8/rotation = Quaternion(0.193549, -0.415561, 0.122026, 0.880317)
+bones/11/rotation = Quaternion(-0.0321259, 5.67637e-05, 0.0102626, 0.999431)
+bones/12/rotation = Quaternion(0.627282, 0.312011, 0.677903, -0.222742)
+bones/13/rotation = Quaternion(-0.257873, -0.0756205, 0.0770608, 0.960127)
+bones/14/rotation = Quaternion(0.0101267, 0.0134884, -0.000271993, 0.999858)
+bones/17/rotation = Quaternion(-0.0156702, 0.026502, 0.860375, 0.508731)
+bones/20/rotation = Quaternion(-0.00964223, -0.00294466, 0.00448875, 0.999939)
+bones/22/rotation = Quaternion(-0.0156463, -0.0265161, -0.860836, 0.50795)
+bones/25/rotation = Quaternion(-0.00964224, 0.00294466, -0.00448874, 0.999939)
+bones/26/rotation = Quaternion(-0.617765, 0.00667019, -0.0125295, 0.786234)
