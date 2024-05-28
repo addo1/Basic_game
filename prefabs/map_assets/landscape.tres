@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dauo4yywr3ygf"]
+
+[ext_resource type="Texture2D" uid="uid://c2aepynxl74j" path="res://prefabs/map_assets/LandscapeBake8k.png" id="1_4vk55"]
+
+[resource]
+albedo_texture = ExtResource("1_4vk55")
