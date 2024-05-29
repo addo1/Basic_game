@@ -66,12 +66,15 @@ data = PackedVector3Array(-10, 0.1195, -10, 10, 0.1195, -10, -10, 0.1195, 10, -1
 [node name="FPSLevel" type="Node3D"]
 
 [node name="FPSCharacter" parent="." instance=ExtResource("2_svct7")]
-transform = Transform3D(-0.158761, 0, -0.987317, 0, 1, 0, 0.987317, 0, -0.158761, 0, 1.025, 0)
+transform = Transform3D(0.492788, 0, 0.870149, 0, 1, 0, -0.870149, 0, 0.492788, 145.03, -9.48356, 87.8429)
 floor_constant_speed = false
 
 [node name="CSGCylinder3D" parent="FPSCharacter" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.041242, 0.144331, 0.25648)
 layers = 1
+
+[node name="JumpSound" parent="FPSCharacter" index="7"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 0, 0)
 
 [node name="Shooting" parent="FPSCharacter" index="8"]
 current_ammo = 0
@@ -774,6 +777,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.6128, 7.15548, -47.8198)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.9274, 7.15548, -69.534)
 
 [node name="EnemyRoom" type="NavigationRegion3D" parent="LevelEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0444717, 0.0656586, -0.0615425)
 navigation_mesh = SubResource("NavigationMesh_gctun")
 
 [node name="Platform69" parent="LevelEnvironment/EnemyRoom" instance=ExtResource("1_0xjb4")]
@@ -978,11 +982,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.7968, 7.15548, -34.9446)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.9953, 4.28821, -34.991)
 
 [node name="AmmoPickup" parent="." instance=ExtResource("9_sl3ij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.3302, 4.28821, -25.1995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.808, -10.7859, 68.7346)
 ammo_stored = 50
 
 [node name="Enemy" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 5.33821, -14)
+transform = Transform3D(0.711965, 0, 0.702215, 0, 1, 0, -0.702215, 0, 0.711965, 124.392, -9.34762, 61.2113)
 aggro_range = 16.0
 
 [node name="VictoryScreen" parent="." instance=ExtResource("11_vq2hs")]
