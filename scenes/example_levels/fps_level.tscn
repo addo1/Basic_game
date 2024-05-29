@@ -52,6 +52,7 @@ ambient_light_source = 3
 ambient_light_color = Color(0.270588, 0.317647, 0.317647, 1)
 ambient_light_sky_contribution = 0.9
 reflected_light_source = 2
+fog_enabled = true
 fog_light_color = Color(0.176471, 0.196078, 0.227451, 1)
 fog_light_energy = 0.5
 fog_sun_scatter = 0.24
@@ -149,7 +150,7 @@ data = PackedVector3Array(0.989, 1.9366, 2.1441, 0.989, 1.8876, 2.1441, 1.1503, 
 transform = Transform3D(1, 6.33534e-05, -0.000196066, -6.3259e-05, 1, 0.000384625, 0.000196096, -0.00038461, 1, 0, 12.3069, 0)
 
 [node name="FPSCharacter" parent="." instance=ExtResource("2_svct7")]
-transform = Transform3D(0.492745, -5.38876e-11, 0.870179, 5.82077e-11, 1.25064, -5.82077e-11, -0.870073, -8.73115e-11, 0.492804, 49.1275, -9.28113, -54.7855)
+transform = Transform3D(0.492745, -7.59286e-11, 0.87018, -5.82077e-11, 1.25064, -1.01863e-10, -0.870074, -3.49246e-10, 0.492805, 154.744, -9.33368, 99.2278)
 floor_constant_speed = false
 
 [node name="CSGCylinder3D" parent="FPSCharacter" index="1"]
@@ -2020,6 +2021,69 @@ surface_material_override/3 = SubResource("StandardMaterial3D_cuqpq")
 [node name="StaticBody3D" type="StaticBody3D" parent="Trees_scary/MeshInstance3D195"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trees_scary/MeshInstance3D195/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_r1f5r")
+
+[node name="tree_no_leaves31" type="MeshInstance3D" parent="Trees_scary"]
+transform = Transform3D(-0.406567, -0.375275, -0.795184, -0.28547, 1.23106, -0.120935, 0.689808, 0.288275, -0.518722, -154.931, 1.6064, 11.3798)
+mesh = ExtResource("21_un7tw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("20_05hav")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trees_scary/tree_no_leaves31"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees_scary/tree_no_leaves31/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_obq53")
+
+[node name="MeshInstance3D196" type="MeshInstance3D" parent="Trees_scary"]
+transform = Transform3D(2.25426, 0.255679, -0.719248, -0.260583, 2.36557, 0.0241966, 0.717486, 0.0558313, 2.26859, -162.938, 2.6344, -5.63421)
+mesh = ExtResource("35_17b60")
+surface_material_override/3 = SubResource("StandardMaterial3D_cuqpq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trees_scary/MeshInstance3D196"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees_scary/MeshInstance3D196/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_r1f5r")
+
+[node name="MeshInstance3D197" type="MeshInstance3D" parent="Trees_scary"]
+transform = Transform3D(1.15809, 0.319921, -2.767, -0.181178, 2.95993, 0.266717, 2.37303, 0.0698593, 1.37072, -147.934, 0.941081, -2.60132)
+mesh = ExtResource("35_17b60")
+surface_material_override/3 = SubResource("StandardMaterial3D_cuqpq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trees_scary/MeshInstance3D197"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees_scary/MeshInstance3D197/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_r1f5r")
+
+[node name="tree_no_leaves32" type="MeshInstance3D" parent="Trees_scary"]
+transform = Transform3D(-0.210787, -0.0292054, -1.04723, -0.171689, 0.99748, 0.0278011, 0.781944, 0.21114, -0.276194, 96.2497, 1.15107, -68.3455)
+mesh = ExtResource("21_un7tw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("20_05hav")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trees_scary/tree_no_leaves32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees_scary/tree_no_leaves32/StaticBody3D"]
+transform = Transform3D(1, -7.45058e-08, 0, -5.96046e-08, 1, 2.6077e-08, 0, 1.11759e-08, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_obq53")
+
+[node name="MeshInstance3D198" type="MeshInstance3D" parent="Trees_scary"]
+transform = Transform3D(2.37682, -0.119877, 0.0278026, 0.120088, 2.3769, -0.0176941, -0.0268753, 0.0190733, 2.37977, 82.832, 1.81542, -81.9326)
+mesh = ExtResource("35_17b60")
+surface_material_override/3 = SubResource("StandardMaterial3D_cuqpq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trees_scary/MeshInstance3D198"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees_scary/MeshInstance3D198/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_r1f5r")
+
+[node name="MeshInstance3D199" type="MeshInstance3D" parent="Trees_scary"]
+transform = Transform3D(1.85199, -0.149997, -2.20875, 0.0782432, 2.97411, -0.128813, 1.88925, 0.0238656, 2.17052, 98.1036, 1.97747, -83.766)
+mesh = ExtResource("35_17b60")
+surface_material_override/3 = SubResource("StandardMaterial3D_cuqpq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trees_scary/MeshInstance3D199"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees_scary/MeshInstance3D199/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_r1f5r")
 
 [node name="bison" type="MeshInstance3D" parent="."]
