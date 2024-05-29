@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c2ws4su30371v"
+path="res://.godot/imported/tree_no_leaves.obj-3161a6fbb070f8b9bd457009138425ce.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tree_no_leaves.obj-3161a6fbb070f8b9bd457009138425ce.mesh"]
+
+source_file="res://prefabs/map_assets/tree_no_leaves.obj"
+dest_files=["res://.godot/imported/tree_no_leaves.obj-3161a6fbb070f8b9bd457009138425ce.mesh", "res://.godot/imported/tree_no_leaves.obj-3161a6fbb070f8b9bd457009138425ce.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
