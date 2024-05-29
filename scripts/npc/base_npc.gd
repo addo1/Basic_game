@@ -2,14 +2,14 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 
-@export var movement_speed = 5.0
+@export var movement_speed = 7.0
 
 @export var is_patrolling = false
 @export var patrol_points: Array[Node3D]
 @export var current_patrol_point = 0
 
 @export var can_aggro = false
-@export var aggro_range = 10.0
+@export var aggro_range = 200.0
 var chased_target = null
 
 var is_dead = false

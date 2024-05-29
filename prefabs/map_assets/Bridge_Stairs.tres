@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://d2icnfhv3o7sv"]
+
+[ext_resource type="Texture2D" uid="uid://byt0xjjt2kp1h" path="res://prefabs/map_assets/textures/weathered_planks_diff_1k.jpg" id="1_ko7wg"]
+[ext_resource type="Texture2D" uid="uid://cfqvrvu0xabtj" path="res://prefabs/map_assets/textures/weathered_planks_disp_1k.png" id="2_nwipl"]
+
+[resource]
+albedo_texture = ExtResource("1_ko7wg")
+roughness_texture = ExtResource("2_nwipl")
+refraction_scale = 1.0
+uv1_scale = Vector3(5.58, 5.58, 5.58)
+uv2_scale = Vector3(0, 0, 0)

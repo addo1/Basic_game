@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://kw7hvmeo6gtm"]
+
+[ext_resource type="Texture2D" uid="uid://bpmt4cqmbcc6q" path="res://prefabs/map_assets/textures/rough_concrete_diff_1k.jpg" id="1_gkc10"]
+
+[resource]
+albedo_texture = ExtResource("1_gkc10")
+roughness_texture = ExtResource("1_gkc10")
+roughness_texture_channel = 3
+heightmap_scale = 16.0
+uv1_scale = Vector3(15, 15, 15)
+grow = true

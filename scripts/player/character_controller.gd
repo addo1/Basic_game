@@ -13,7 +13,7 @@ var GRAVITY = 9.8
 @export var player_model : Node3D
 
 # the velocity at which the player jumps
-@export var jump_velocity = 5
+@export var jump_velocity = 3.5
 # whether the player wants to jump
 # it's tracked because we might want to jump when we can't
 var wants_to_jump = false
