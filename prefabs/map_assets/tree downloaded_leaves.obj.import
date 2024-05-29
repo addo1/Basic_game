@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b08qsqtbhk77k"
+path="res://.godot/imported/tree downloaded_leaves.obj-82514ad9059cfc583f2ef134219d0eef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tree downloaded_leaves.obj-82514ad9059cfc583f2ef134219d0eef.mesh"]
+
+source_file="res://prefabs/map_assets/tree downloaded_leaves.obj"
+dest_files=["res://.godot/imported/tree downloaded_leaves.obj-82514ad9059cfc583f2ef134219d0eef.mesh", "res://.godot/imported/tree downloaded_leaves.obj-82514ad9059cfc583f2ef134219d0eef.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
