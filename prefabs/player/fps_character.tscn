@@ -21,14 +21,14 @@ controlled_character = NodePath("..")
 shooting_node = NodePath("../Shooting")
 camera = NodePath("../FPSCameraRoot")
 
-[node name="Shooting" parent="." index="8" node_paths=PackedStringArray("custom_shot_origin_transform") instance=ExtResource("4_ypnik")]
+[node name="Shooting" parent="." index="7" node_paths=PackedStringArray("custom_shot_origin_transform") instance=ExtResource("4_ypnik")]
 infinite_ammo = true
 shooting_rate = 0.1
 automatic = true
 custom_shot_origin_transform = NodePath("../FPSCameraRoot/Camera3D")
 
-[node name="CoinStash" parent="." index="9" instance=ExtResource("5_wdddl")]
+[node name="CoinStash" parent="." index="8" instance=ExtResource("5_wdddl")]
 
-[node name="Health" parent="." index="10" instance=ExtResource("6_grrvf")]
+[node name="Health" parent="." index="9" instance=ExtResource("6_grrvf")]
 
 [editable path="FPSCameraRoot"]

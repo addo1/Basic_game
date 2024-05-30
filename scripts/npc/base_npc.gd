@@ -18,6 +18,7 @@ var start_movement = false
 func _ready():
 	if has_node("Health"):
 		get_node("Health").died.connect(_on_died)
+		get_node("Health").health_changed.connect(_health_changed)
 	$monster/AnimationPlayer.play("block")
 
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
@@ -109,7 +110,8 @@ func _on_aggro_range_entered(body):
 		$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
 		
 func _on_starting_animation_finished(anim_name):
-	if anim_name == "starting" or "attacking":
+	if anim_name == "starting" or "attacking" or "blocking":
+		get_node("Health").is_blocking = false
 		$monster/AnimationPlayer.play("walking")
 		start_movement = true
 
@@ -125,3 +127,14 @@ func _on_died():
 		damage_area.set_deferred("monitorable", false)
 		velocity = Vector3.ZERO
 		$monster/AnimationPlayer.play("dying")
+
+func _health_changed(health, delta, max_health):
+	print("Health changed:", health, delta, max_health)
+	if health > 0:
+		$monster/AnimationPlayer.animation_finished.disconnect(_on_starting_animation_finished)
+		get_node("Health").is_blocking = true
+		$monster/AnimationPlayer.play("blocking")
+		$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
+	else:
+		_on_died()
+
