@@ -1,7 +1,6 @@
-[gd_scene load_steps=60 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=61 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
-[ext_resource type="AudioStream" uid="uid://cf0c7xdsivq4t" path="res://audio/sfx/jump.ogg" id="2_p3c5t"]
 [ext_resource type="PackedScene" uid="uid://d3xk1qhglyujs" path="res://prefabs/player/fps_character.tscn" id="2_svct7"]
 [ext_resource type="PackedScene" uid="uid://dsd1h1jnod1ij" path="res://prefabs/gameplay/collectables/ammo_pickup.tscn" id="9_sl3ij"]
 [ext_resource type="PackedScene" uid="uid://dqu6w8xlqmeay" path="res://prefabs/npc/fps_enemy.tscn" id="10_kdx46"]
@@ -22,7 +21,9 @@
 [ext_resource type="ArrayMesh" uid="uid://c2ws4su30371v" path="res://prefabs/map_assets/tree_no_leaves.obj" id="21_un7tw"]
 [ext_resource type="Material" uid="uid://kw7hvmeo6gtm" path="res://prefabs/map_assets/structure.tres" id="23_hbe8l"]
 [ext_resource type="ArrayMesh" uid="uid://dilpqxlq7olvy" path="res://prefabs/map_assets/street_lamp.obj" id="25_xn1fh"]
+[ext_resource type="PackedScene" uid="uid://bghwnw3qvuslv" path="res://prefabs/gameplay/collectables/kaunas_collectible.tscn" id="29_0sd8m"]
 [ext_resource type="Material" uid="uid://dtk01ganhmvit" path="res://prefabs/map_assets/water.tres" id="29_wd44p"]
+[ext_resource type="Script" path="res://prefabs/gameplay/collectables/kaunas_collectible.gd" id="30_1m1bl"]
 [ext_resource type="ArrayMesh" uid="uid://cxxfkip76edig" path="res://prefabs/map_assets/spike.obj" id="30_gosvo"]
 [ext_resource type="Material" uid="uid://cx3otvxekoygm" path="res://prefabs/map_assets/spike.tres" id="31_2lxd2"]
 [ext_resource type="ArrayMesh" uid="uid://dwc3gg6fjc527" path="res://prefabs/map_assets/bench_simple.obj" id="32_7kab5"]
@@ -151,11 +152,7 @@ floor_constant_speed = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.041242, 0.144331, 0.25648)
 layers = 1
 
-[node name="JumpSound" parent="FPSCharacter" index="7"]
-transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 0, 0)
-stream = ExtResource("2_p3c5t")
-
-[node name="Shooting" parent="FPSCharacter" index="8"]
+[node name="Shooting" parent="FPSCharacter" index="7"]
 current_ammo = 0
 infinite_ammo = false
 
@@ -3941,7 +3938,12 @@ surface_material_override/3 = SubResource("StandardMaterial3D_cuqpq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="trees_3/MeshInstance3D127/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_r1f5r")
 
-[connection signal="jumped" from="FPSCharacter" to="FPSCharacter/JumpSound" method="play"]
+[node name="Kaunascollectible" parent="." instance=ExtResource("29_0sd8m")]
+transform = Transform3D(1, -3.0056e-12, 0, 1.59162e-12, 1, -1.4843e-09, 0, 0, 1.00001, 149.092, -12.4653, 90.0678)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("30_1m1bl")
+
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
 
