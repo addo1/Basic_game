@@ -49,7 +49,6 @@ func _ready():
 	
 func _on_body_entered(body):
 	if body is CharacterBody3D:
-		print("Nepřítel narazil do hráče!")
 		start_movement = false
 		$monster/AnimationPlayer.play("attacking")
 		$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
@@ -112,7 +111,6 @@ func _on_aggro_range_entered(body):
 func _on_starting_animation_finished(anim_name):
 	if anim_name == "starting" or "attacking":
 		$monster/AnimationPlayer.play("walking")
-		$monster/AnimationPlayer.animation_finished.disconnect(_on_starting_animation_finished)
 		start_movement = true
 
 func launch_character(launch_velocity, _allow_air_control = true):
@@ -120,6 +118,7 @@ func launch_character(launch_velocity, _allow_air_control = true):
 
 func _on_died():
 	is_dead = true
+	$monster/AnimationPlayer.animation_finished.disconnect(_on_starting_animation_finished)
 	if has_node("DamageArea"):
 		var damage_area = get_node("DamageArea")
 		damage_area.set_deferred("monitoring", false)
