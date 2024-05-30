@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://civdxx5i35mqr"]
+[gd_scene load_steps=11 format=3 uid="uid://civdxx5i35mqr"]
 
 [ext_resource type="Script" path="res://scripts/player/character_controller.gd" id="1_uicv0"]
 [ext_resource type="AudioStream" uid="uid://c2rv44wodj465" path="res://audio/sfx/land.ogg" id="2_354d2"]
-[ext_resource type="AudioStream" uid="uid://cf0c7xdsivq4t" path="res://audio/sfx/jump.ogg" id="3_00vjj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tae2m"]
 
@@ -97,10 +96,6 @@ draw_pass_1 = SubResource("SphereMesh_jimye")
 [node name="LandSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_354d2")
 
-[node name="JumpSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_00vjj")
-
-[connection signal="jumped" from="." to="JumpSound" method="play"]
 [connection signal="jumped" from="." to="JumpParticle" method="set_emitting" binds= [true]]
 [connection signal="landed" from="." to="LandSound" method="play"]
 [connection signal="landed" from="." to="LandParticle" method="set_emitting" binds= [true]]
