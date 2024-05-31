@@ -1,6 +1,7 @@
-[gd_scene load_steps=61 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=62 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
+[ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
 [ext_resource type="PackedScene" uid="uid://d3xk1qhglyujs" path="res://prefabs/player/fps_character.tscn" id="2_svct7"]
 [ext_resource type="PackedScene" uid="uid://dsd1h1jnod1ij" path="res://prefabs/gameplay/collectables/ammo_pickup.tscn" id="9_sl3ij"]
 [ext_resource type="PackedScene" uid="uid://dqu6w8xlqmeay" path="res://prefabs/npc/fps_enemy.tscn" id="10_kdx46"]
@@ -155,6 +156,9 @@ layers = 1
 [node name="Shooting" parent="FPSCharacter" index="7"]
 current_ammo = 0
 infinite_ammo = false
+
+[node name="AmmoReloadSound" type="AudioStreamPlayer3D" parent="FPSCharacter/Shooting" index="3"]
+stream = ExtResource("2_aauvn")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="FPSCharacter"]
 transform = Transform3D(0.997424, 0.0499339, 0.0514853, -0.0456838, 0.995694, -0.0806589, -0.0552913, 0.0780991, 0.995411, 0.16256, 0.937548, 1.76692)

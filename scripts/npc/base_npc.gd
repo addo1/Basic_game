@@ -52,7 +52,6 @@ func _on_body_entered(body):
 	if body is CharacterBody3D:
 		start_movement = false
 		$monster/AnimationPlayer.play("attacking")
-		$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
 		#var health = body.get_node("Health") if body.has_node("Health") else null
 		#if health:
 			#health.take_damage(10)
