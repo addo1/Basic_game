@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=63 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -28,6 +28,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cxxfkip76edig" path="res://prefabs/map_assets/spike.obj" id="30_gosvo"]
 [ext_resource type="Material" uid="uid://cx3otvxekoygm" path="res://prefabs/map_assets/spike.tres" id="31_2lxd2"]
 [ext_resource type="ArrayMesh" uid="uid://dwc3gg6fjc527" path="res://prefabs/map_assets/bench_simple.obj" id="32_7kab5"]
+[ext_resource type="AudioStream" uid="uid://dd5ril1s70nah" path="res://audio/[No Copyright Music]  Broken Piano _ Horror Music _ Royalty Free Music (128kbps).mp3" id="32_ojmg8"]
 [ext_resource type="ArrayMesh" uid="uid://bryw5jg0dihxy" path="res://prefabs/map_assets/bison.obj" id="33_nyml2"]
 [ext_resource type="ArrayMesh" uid="uid://de2yd03qwwqfl" path="res://prefabs/map_assets/tree downloaded.obj" id="34_6rkda"]
 [ext_resource type="ArrayMesh" uid="uid://cxhoka20rmyw8" path="res://prefabs/map_assets/tree downloaded_semileaves.obj" id="35_17b60"]
@@ -3943,10 +3944,14 @@ surface_material_override/3 = SubResource("StandardMaterial3D_cuqpq")
 shape = SubResource("ConcavePolygonShape3D_r1f5r")
 
 [node name="Kaunascollectible" parent="." instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, -3.0056e-12, 0, 1.59162e-12, 1, -1.4843e-09, 0, 0, 1.00001, 149.092, -12.4653, 90.0678)
-collision_layer = 0
+transform = Transform3D(1, -3.0056e-12, 0, 1.59162e-12, 1, -1.94996e-09, 0, 0, 1.00001, 149.092, -11.1147, 90.0685)
+collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_ojmg8")
+autoplay = true
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]

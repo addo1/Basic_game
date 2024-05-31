@@ -40,13 +40,12 @@ _data = {
 }
 
 [node name="Diamond" type="Area3D"]
-collision_layer = 0
-collision_mask = 16
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.53572, 0)
 script = ExtResource("1_f8d1c")
 value = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1.04779, 0)
 shape = SubResource("SphereShape3D_c1ng7")
 
 [node name="CoinRoot" type="Node3D" parent="."]

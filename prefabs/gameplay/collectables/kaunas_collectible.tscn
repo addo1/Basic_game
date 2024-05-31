@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bghwnw3qvuslv"]
+[gd_scene load_steps=7 format=3 uid="uid://bghwnw3qvuslv"]
 
 [ext_resource type="PackedScene" uid="uid://r1giav5vehav" path="res://prefabs/gameplay/collectables/soup.glb" id="1_rd1ff"]
-[ext_resource type="AudioStream" uid="uid://ckih6p2h2glj" path="res://audio/sfx/coin.ogg" id="2_4j37a"]
+[ext_resource type="AudioStream" uid="uid://bp5eloabq6mtc" path="res://audio/Dark Horror Trailer - No Copyright (128kbps) (mp3cut.net).mp3" id="2_x48ge"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2v70l"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2bt8u"]
 
 [sub_resource type="Animation" id="Animation_422jh"]
 resource_name = "new_animation"
@@ -39,23 +41,26 @@ _data = {
 }
 
 [node name="Kaunascollectible" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34015, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1.00286, 0)
 shape = SubResource("SphereShape3D_2v70l")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13289, 0)
 
 [node name="soup" parent="Node3D" instance=ExtResource("1_rd1ff")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CoinSound" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4455, 0)
-stream = ExtResource("2_4j37a")
+transform = Transform3D(-0.620511, 0, 0.784198, 0, 1, 0, -0.784198, 0, -0.620511, 0, -0.367495, 0)
+mesh = SubResource("ArrayMesh_2bt8u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Node3D")
 libraries = {
 "": SubResource("AnimationLibrary_8ld6o")
 }
+autoplay = "new_animation"
+
+[node name="CoinSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4455, 0)
+stream = ExtResource("2_x48ge")

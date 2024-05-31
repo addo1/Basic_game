@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/soup.glb-1b3480a8d43bfa72ec3a60a70f71f470.scn
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="MeshInstance3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
