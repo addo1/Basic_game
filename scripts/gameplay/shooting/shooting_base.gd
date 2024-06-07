@@ -2,7 +2,7 @@ extends Node3D
 
 class_name ShootingBase
 
-@export var max_ammo = 100
+@export var max_ammo = 10
 @export var current_ammo = 0
 @export var infinite_ammo = false
 
@@ -22,6 +22,7 @@ var wants_to_shoot = false
 
 # internal timer to keep track of shooting rate
 var shot_timer : Timer
+var reload = true
 
 signal ammo_changed(new_ammo, delta)
 
@@ -39,9 +40,12 @@ func attempt_shoot():
 		shot_timer.start()
 		_shoot()
 	else:
-		await get_tree().create_timer(2.0).timeout
-		ammo_pickup_sound.play()
-		add_ammo(10)
+		if reload:
+			reload = false
+			await get_tree().create_timer(2.0).timeout
+			ammo_pickup_sound.play()
+			add_ammo(10)
+			reload = true
 
 func  _shoot():
 	pass
