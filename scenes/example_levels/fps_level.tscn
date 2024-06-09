@@ -135,6 +135,9 @@ transform = Transform3D(1, 6.33534e-05, -0.000196066, -6.3259e-05, 1, 0.00038462
 transform = Transform3D(0.492849, 0.000168196, 0.870122, -7.06874e-06, 1.25064, -0.000150559, -0.870016, 8.50927e-05, 0.492909, 154.744, -9.33368, 99.2278)
 floor_constant_speed = false
 
+[node name="CollisionShape3D" parent="FPSCharacter" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -2.98023e-08, -1.45519e-11, 1, 0, 0, 0)
+
 [node name="CSGCylinder3D" parent="FPSCharacter" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.041242, 0.144331, 0.25648)
 layers = 1
@@ -158,8 +161,12 @@ environment = SubResource("Environment_7lgrf")
 camera_attributes = SubResource("CameraAttributesPractical_b4mem")
 
 [node name="AmmoPickup" parent="." instance=ExtResource("9_sl3ij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.808, -10.7859, 68.7346)
+transform = Transform3D(1, -3.0056e-12, 0, 1.59162e-12, 1, -5.52973e-10, 0, 0, 1, 93.594, -10.763, 3.666)
 ammo_stored = 50
+
+[node name="CollisionShape3D" parent="AmmoPickup" index="0"]
+transform = Transform3D(1, -3.0127e-12, 1.45519e-11, 1.7053e-12, 1, -2.91038e-11, 0, 0, 1, 0, 1, 0)
+disabled = true
 
 [node name="Enemy" parent="." instance=ExtResource("10_kdx46")]
 transform = Transform3D(-1.31886, 0, -1.15648, 0, 1.45504, 0, 0.979861, 0, -1.55658, 124.392, -9.07193, 61.2113)
@@ -975,6 +982,7 @@ shape = SubResource("ConcavePolygonShape3D_r1f5r")
 [node name="bison" parent="." instance=ExtResource("25_6plwv")]
 
 [node name="Area3D" parent="bison" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.98023e-08, 3.72529e-09, 1, -3.72529e-09, 0, -3.72529e-09, 1, 0, 0, 0)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("26_nle3c")
@@ -3977,6 +3985,7 @@ omni_attenuation = 0.435276
 
 [editable path="FPSCharacter"]
 [editable path="FPSCharacter/FPSCameraRoot"]
+[editable path="AmmoPickup"]
 [editable path="Enemy"]
 [editable path="Enemy/DamageArea"]
 [editable path="bison"]
