@@ -20,6 +20,7 @@ func _on_coin_body_entered(body):
 		set_deferred("monitoring", false)
 		# hide the coin
 		visible = false
+		print(coin_stash.coins_in_stash)
 		# play the coin added sound and monitor when the sound is finished
 		$CoinSound.play()
 		$CoinSound.finished.connect(_on_coin_sound_finished)
