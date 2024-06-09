@@ -50,6 +50,7 @@ ambient_light_source = 3
 ambient_light_color = Color(0.270588, 0.317647, 0.317647, 1)
 ambient_light_sky_contribution = 0.9
 reflected_light_source = 2
+fog_enabled = true
 fog_light_color = Color(0.176471, 0.196078, 0.227451, 1)
 fog_light_energy = 0.5
 fog_sun_scatter = 0.24
