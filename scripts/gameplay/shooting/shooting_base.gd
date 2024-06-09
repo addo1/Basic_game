@@ -35,12 +35,13 @@ func _ready():
 	add_child(shot_timer)
 
 func attempt_shoot():
+	var shoot_enable = Global.shoot_enable
 	if can_shoot():
 		remove_ammo(1)
 		shot_timer.start()
 		_shoot()
 	else:
-		if reload:
+		if reload and shoot_enable:
 			reload = false
 			await get_tree().create_timer(2.0).timeout
 			ammo_pickup_sound.play()
@@ -71,6 +72,7 @@ func _shot_timer_timeout():
 		attempt_shoot()
 
 func add_ammo(amount):
+	print("add ammo")
 	current_ammo = min(max_ammo, current_ammo + amount)
 	emit_signal("ammo_changed", current_ammo, amount)
 
