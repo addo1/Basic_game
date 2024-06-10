@@ -56,19 +56,19 @@ offset_top = 123.0
 offset_right = 52.0
 offset_bottom = 146.0
 grow_horizontal = 2
-text = "Select a Level"
+text = "Time to Fear"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.376
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.376
 anchor_bottom = 0.5
-offset_left = -221.5
-offset_top = -50.0
-offset_right = 221.5
-offset_bottom = 50.0
+offset_left = 97.72
+offset_top = -64.0
+offset_right = 222.72
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -89,40 +89,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ThirdPersonBtn" type="Button" parent="LevelSelect/HBoxContainer"]
-custom_minimum_size = Vector2(125, 125)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="LevelSelect/HBoxContainer/ThirdPersonBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Third Person Level"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="PlatformerBtn" type="Button" parent="LevelSelect/HBoxContainer"]
-custom_minimum_size = Vector2(125, 125)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="LevelSelect/HBoxContainer/PlatformerBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Platformer Level"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
 [connection signal="pressed" from="TitleScreen/PlayBtn" to="." method="show_level_select"]
 [connection signal="pressed" from="TitleScreen/ExitBtn" to="." method="exit_game"]
 [connection signal="pressed" from="LevelSelect/HBoxContainer/FPSBtn" to="." method="start_fps_level"]
-[connection signal="pressed" from="LevelSelect/HBoxContainer/ThirdPersonBtn" to="." method="start_third_person_level"]
-[connection signal="pressed" from="LevelSelect/HBoxContainer/PlatformerBtn" to="." method="start_platformer_level"]
