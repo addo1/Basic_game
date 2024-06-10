@@ -28,7 +28,7 @@ func _on_damage_area_body_entered(body):
 		if health_node != null and not damaged_entities.has(body):
 			# only deal damage if we're not dealing it over time
 			if not is_damage_over_time:
-				if health_node.apply_damage(damage):
+				if health_node.apply_damage(2*damage):
 					$DamageSound.play()
 					if body is CharacterBody3D:
 						# calculate the direction of launch to move the character away from the damage source

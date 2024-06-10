@@ -186,6 +186,7 @@ light_energy = 0.3
 omni_range = 2.31221
 
 [node name="VictoryScreen" parent="." instance=ExtResource("11_vq2hs")]
+metadata/_edit_use_anchors_ = true
 
 [node name="VictoryTracker" parent="." node_paths=PackedStringArray("player", "victory_screen") instance=ExtResource("12_4sjd4")]
 player = NodePath("../FPSCharacter")
