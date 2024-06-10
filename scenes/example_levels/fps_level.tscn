@@ -1,8 +1,9 @@
-[gd_scene load_steps=60 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=61 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
 [ext_resource type="PackedScene" uid="uid://d3xk1qhglyujs" path="res://prefabs/player/fps_character.tscn" id="2_svct7"]
+[ext_resource type="Script" path="res://scripts/gui/health_display.gd" id="6_r1t6d"]
 [ext_resource type="PackedScene" uid="uid://dsd1h1jnod1ij" path="res://prefabs/gameplay/collectables/ammo_pickup.tscn" id="9_sl3ij"]
 [ext_resource type="PackedScene" uid="uid://dqu6w8xlqmeay" path="res://prefabs/npc/fps_enemy.tscn" id="10_kdx46"]
 [ext_resource type="PackedScene" uid="uid://lju1rkkpsl77" path="res://prefabs/gameplay/victory_screen.tscn" id="11_vq2hs"]
@@ -3987,6 +3988,19 @@ light_color = Color(0.962582, 0.000857305, 0.977407, 1)
 light_energy = 0.515
 omni_range = 1.984
 omni_attenuation = 0.435276
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("health_node")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_right = 41.0
+offset_bottom = 48.0
+grow_horizontal = 2
+script = ExtResource("6_r1t6d")
+health_node = NodePath("../../FPSCharacter/Health")
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
