@@ -8,6 +8,7 @@ func _ready():
 func announce_victory():
 	visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$timer_label.time_on = false
 
 func main_menu_pressed():
 	get_parent().get_parent().load_initial_scene()
