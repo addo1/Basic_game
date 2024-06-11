@@ -12,14 +12,15 @@ func _ready():
 func _on_coin_body_entered(body):
 	# check if the body entered has the CoinStash node
 	# if it doesn't, do nothing
-	if body.has_node("CoinStash"):
-		var coin_stash = body.get_node("CoinStash")
+	if body.has_node("CoinStash_score"):
+		var coin_stash = body.get_node("CoinStash_score")
 		coin_stash.add_coins(value)
 		# disable the coin trigger
 		set_deferred("monitorable", false)
 		set_deferred("monitoring", false)
 		# hide the coin
 		visible = false
+		print(coin_stash.score_in_stash)
 		# play the coin added sound and monitor when the sound is finished
 		$CoinSound.play()
 		$CoinSound.finished.connect(_on_coin_sound_finished)
