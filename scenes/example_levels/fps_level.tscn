@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=62 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://dd5ril1s70nah" path="res://audio/[No Copyright Music]  Broken Piano _ Horror Music _ Royalty Free Music (128kbps).mp3" id="32_ojmg8"]
 [ext_resource type="ArrayMesh" uid="uid://de2yd03qwwqfl" path="res://prefabs/map_assets/tree downloaded.obj" id="34_6rkda"]
 [ext_resource type="ArrayMesh" uid="uid://cxhoka20rmyw8" path="res://prefabs/map_assets/tree downloaded_semileaves.obj" id="35_17b60"]
+[ext_resource type="Script" path="res://scripts/menu/TutorialText.gd" id="35_qbixk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8s7u3"]
 panorama = ExtResource("2_8wknx")
@@ -1014,9 +1015,48 @@ grow_vertical = 0
 [node name="TextEdit" type="Label" parent="bison/Area3D/BisonText/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Hello traveler, I have been expecting you. You see there is a monster walking around this park.
-Unfortunatelly, I lost my source of power. Bring me my favourite Šaltibarščiai.I need three portions of
+text = "BISON: Hello traveler, I have been expecting you. You see there is a Madman walking around this park.
+Unfortunatelly, I lost my source of power. Bring me my favourite Šaltibarščiai. I need three portions of
 this holly dish. Then, I will be able to give you a nasty gun so you could set this park free."
+horizontal_alignment = 1
+
+[node name="BisonText2" type="CanvasLayer" parent="bison/Area3D" index="2"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bison/Area3D/BisonText2"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="bison/Area3D/BisonText2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BISON: Bring me more Šaltibarščiai! It will be somewhere around the park.
+We must stop the Madman!"
+horizontal_alignment = 1
+
+[node name="BisonText3" type="CanvasLayer" parent="bison/Area3D" index="3"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bison/Area3D/BisonText3"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="bison/Area3D/BisonText3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BISON: Traveller, you have proven yourself! Thank you for bringing me my sweet Šaltibarščiai.
+Now I can finally provide you the weapon needed for stopping the Madman! The golden orb will
+grant you the shooting power. Free the park and free yourself!"
 horizontal_alignment = 1
 
 [node name="trees_no_leaves2" type="Node" parent="."]
@@ -4020,6 +4060,32 @@ offset_bottom = 48.0
 grow_horizontal = 2
 script = ExtResource("6_r1t6d")
 health_node = NodePath("../../FPSCharacter/Health")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("35_qbixk")
+
+[node name="TutorialText" type="CanvasLayer" parent="Node"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node/TutorialText"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -484.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="Node/TutorialText/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TUTORIAL
+
+move : W A S D
+Collect items by running into them.
+Explore, find out what you have to do.
+Be aware, you are not alone."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
