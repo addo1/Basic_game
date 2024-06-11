@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://20ji5o5tq41e"]
+
+[ext_resource type="PackedScene" uid="uid://s1sluri1n5x4" path="res://prefabs/gameplay/collectables/beerbottle2.glb" id="1_87cs7"]
+
+[sub_resource type="GDScript" id="GDScript_epwnr"]
+resource_name = "beerbottle"
+script/source = "extends Area3D
+
+# how much the pickup will heal
+@export var heal_amount = 10
+
+func _ready():
+	# connect the body_entered signal to the _on_pickup_body_entered function when starting play
+	body_entered.connect(_on_pickup_body_entered)
+
+func _on_pickup_body_entered(body):
+	# check if the body entered has the Health node
+	# if it doesn't, do nothing
+	if body.has_node(\"Health\"):
+		var health_node = body.get_node(\"Health\")
+		if health_node != null:
+			health_node.heal(heal_amount)
+			# disable the health trigger
+			set_deferred(\"monitoring\", false)
+			set_deferred(\"monitorable\", false)
+			# hide the visual
+			visible = false
+			# play the health sound and wait for it to finish
+			$HealthSound.play()
+			$HealthSound.finished.connect(_on_health_sound_finished)
+
+func _on_health_sound_finished():
+	# destroy the pickup when sound is finished
+	queue_free()
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p4ogq"]
+
+[sub_resource type="Animation" id="Animation_2w4jo"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeerRoot:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 2, 0), Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeerRoot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_koxpy"]
+_data = {
+"new_animation": SubResource("Animation_2w4jo")
+}
+
+[node name="Area3D" type="Area3D"]
+transform = Transform3D(0.725445, 0, -0.68828, 0, 1, 0, 0.68828, 0, 0.725445, 0, 1.14694, 0)
+script = SubResource("GDScript_epwnr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0137794, 0.939816, 2.40927e-09)
+shape = SubResource("SphereShape3D_p4ogq")
+
+[node name="BeerRoot" type="Node3D" parent="."]
+transform = Transform3D(0.00119598, 0, 0.399998, 0, 0.4, 0, -0.399998, 0, 0.00119598, 0, 1.49857, 0)
+
+[node name="Beerbottle" parent="BeerRoot" instance=ExtResource("1_87cs7")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_koxpy")
+}
+autoplay = "new_animation"
+
+[node name="Beerpickupsound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.743145, 0, -0.669131, 0, 1, 0, 0.669131, 0, 0.743145, 0, 0.877702, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
