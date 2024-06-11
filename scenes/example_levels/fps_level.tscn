@@ -1,10 +1,14 @@
 [gd_scene load_steps=62 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=67 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
 [ext_resource type="PackedScene" uid="uid://d3xk1qhglyujs" path="res://prefabs/player/fps_character.tscn" id="2_svct7"]
+[ext_resource type="PackedScene" uid="uid://fq1cbrk0ggvd" path="res://prefabs/player/coin_stash.tscn" id="3_2idge"]
+[ext_resource type="Script" path="res://prefabs/player/coin_stash_score.gd" id="4_ku5v6"]
 [ext_resource type="Script" path="res://scripts/gui/health_display.gd" id="6_r1t6d"]
 [ext_resource type="PackedScene" uid="uid://dsd1h1jnod1ij" path="res://prefabs/gameplay/collectables/ammo_pickup.tscn" id="9_sl3ij"]
+[ext_resource type="Script" path="res://scenes/example_levels/score.gd" id="10_chl65"]
 [ext_resource type="PackedScene" uid="uid://dqu6w8xlqmeay" path="res://prefabs/npc/fps_enemy.tscn" id="10_kdx46"]
 [ext_resource type="PackedScene" uid="uid://lju1rkkpsl77" path="res://prefabs/gameplay/victory_screen.tscn" id="11_vq2hs"]
 [ext_resource type="PackedScene" uid="uid://dtc88bsd6lm1c" path="res://prefabs/gameplay/victory_tracker.tscn" id="12_4sjd4"]
@@ -36,6 +40,12 @@
 [ext_resource type="ArrayMesh" uid="uid://cxhoka20rmyw8" path="res://prefabs/map_assets/tree downloaded_semileaves.obj" id="35_17b60"]
 [ext_resource type="PackedScene" uid="uid://20ji5o5tq41e" path="res://prefabs/gameplay/collectables/beerbottle.tscn" id="35_xdpck"]
 
+[ext_resource type="Script" path="res://scripts/menu/TutorialText.gd" id="35_qbixk"]
+
+[ext_resource type="Script" path="res://scenes/example_levels/timer_label.gd" id="35_k2qku"]
+[ext_resource type="PackedScene" uid="uid://cdu1t1enirmun" path="res://prefabs/gameplay/collectables/coin.tscn" id="37_cbgsp"]
+[ext_resource type="AudioStream" uid="uid://ckih6p2h2glj" path="res://audio/sfx/coin.ogg" id="38_qvb0l"]
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8s7u3"]
 panorama = ExtResource("2_8wknx")
 
@@ -52,7 +62,6 @@ ambient_light_source = 3
 ambient_light_color = Color(0.270588, 0.317647, 0.317647, 1)
 ambient_light_sky_contribution = 0.9
 reflected_light_source = 2
-fog_enabled = true
 fog_light_color = Color(0.176471, 0.196078, 0.227451, 1)
 fog_light_energy = 0.5
 fog_sun_scatter = 0.24
@@ -152,6 +161,9 @@ infinite_ammo = false
 [node name="AmmoReloadSound" type="AudioStreamPlayer3D" parent="FPSCharacter/Shooting" index="3"]
 stream = ExtResource("2_aauvn")
 
+[node name="CoinStash_score" parent="FPSCharacter" instance=ExtResource("3_2idge")]
+script = ExtResource("4_ku5v6")
+
 [node name="SpotLight3D" type="SpotLight3D" parent="FPSCharacter"]
 transform = Transform3D(0.997424, 0.0499339, 0.0514853, -0.0456838, 0.995694, -0.0806589, -0.0552913, 0.0780991, 0.995411, 0.16256, 0.937548, 1.76692)
 light_color = Color(0.721569, 0.788235, 0.831373, 1)
@@ -189,6 +201,22 @@ omni_range = 2.31221
 
 [node name="VictoryScreen" parent="." instance=ExtResource("11_vq2hs")]
 metadata/_edit_use_anchors_ = true
+
+[node name="timer_label" type="Label" parent="VictoryScreen"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 183.0
+offset_right = 709.0
+offset_bottom = 237.0
+script = ExtResource("35_k2qku")
+
+[node name="Label" type="Label" parent="VictoryScreen"]
+layout_mode = 0
+offset_left = 621.0
+offset_top = 213.0
+offset_right = 661.0
+offset_bottom = 236.0
+script = ExtResource("10_chl65")
 
 [node name="VictoryTracker" parent="." node_paths=PackedStringArray("player", "victory_screen") instance=ExtResource("12_4sjd4")]
 player = NodePath("../FPSCharacter")
@@ -1000,6 +1028,65 @@ script = ExtResource("26_nle3c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bison/Area3D" index="0"]
 transform = Transform3D(7, -1.49012e-07, 4.76837e-07, 1.49012e-07, 7, 1.16825e-06, -4.76837e-07, -1.16825e-06, 7, -5.56855, 1.04886, 0.000743866)
 shape = SubResource("BoxShape3D_88oo0")
+
+[node name="BisonText" type="CanvasLayer" parent="bison/Area3D" index="1"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bison/Area3D/BisonText"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="bison/Area3D/BisonText/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BISON: Hello traveler, I have been expecting you. You see there is a Madman walking around this park.
+Unfortunatelly, I lost my source of power. Bring me my favourite Šaltibarščiai. I need three portions of
+this holly dish. Then, I will be able to give you a nasty gun so you could set this park free."
+horizontal_alignment = 1
+
+[node name="BisonText2" type="CanvasLayer" parent="bison/Area3D" index="2"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bison/Area3D/BisonText2"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="bison/Area3D/BisonText2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BISON: Bring me more Šaltibarščiai! It will be somewhere around the park.
+We must stop the Madman!"
+horizontal_alignment = 1
+
+[node name="BisonText3" type="CanvasLayer" parent="bison/Area3D" index="3"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bison/Area3D/BisonText3"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="bison/Area3D/BisonText3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BISON: Traveller, you have proven yourself! Thank you for bringing me my sweet Šaltibarščiai.
+Now I can finally provide you the weapon needed for stopping the Madman! The golden orb will
+grant you the shooting power. Free the park and free yourself!"
+horizontal_alignment = 1
 
 [node name="trees_no_leaves2" type="Node" parent="."]
 
@@ -3990,6 +4077,166 @@ light_energy = 0.515
 omni_range = 1.984
 omni_attenuation = 0.435276
 
+[node name="ScoreCoin" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, 82.5201)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin"]
+
+[node name="Coin" parent="collectibles/ScoreCoin/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin"]
+
+[node name="ScoreCoin2" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, -29.8418)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin2"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin2"]
+
+[node name="Coin" parent="collectibles/ScoreCoin2/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin2"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin2"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin2"]
+
+[node name="ScoreCoin3" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.633, 1.22, -29.8418)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin3"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin3"]
+
+[node name="Coin" parent="collectibles/ScoreCoin3/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin3"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin3"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin3"]
+
+[node name="ScoreCoin4" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2002, 1.22, 74.4139)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin4"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin4"]
+
+[node name="Coin" parent="collectibles/ScoreCoin4/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin4"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin4"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin4"]
+
+[node name="ScoreCoin5" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.559, 1.22, -6.75916)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin5"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin5"]
+
+[node name="Coin" parent="collectibles/ScoreCoin5/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin5"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin5"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin5"]
+
+[node name="ScoreCoin6" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8286, 2.02587, -91.6098)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin6"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin6"]
+
+[node name="Coin" parent="collectibles/ScoreCoin6/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin6"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin6"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin6"]
+
+[node name="ScoreCoin7" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -77.536)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin7"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin7"]
+
+[node name="Coin" parent="collectibles/ScoreCoin7/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin7"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin7"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin7"]
+
+[node name="ScoreCoin8" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -104.067)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin8"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin8"]
+
+[node name="Coin" parent="collectibles/ScoreCoin8/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin8"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin8"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin8"]
+
+[node name="ScoreCoin9" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5164, 2.02587, -95.0775)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin9"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin9"]
+
+[node name="Coin" parent="collectibles/ScoreCoin9/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin9"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin9"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin9"]
+
+[node name="ScoreCoin10" type="Area3D" parent="collectibles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7114, 2.02587, -72.1055)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin10"]
+
+[node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin10"]
+
+[node name="Coin" parent="collectibles/ScoreCoin10/Node3D" instance=ExtResource("37_cbgsp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin10"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin10"]
+stream = ExtResource("38_qvb0l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin10"]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("health_node")]
@@ -4005,6 +4252,33 @@ health_node = NodePath("../../FPSCharacter/Health")
 
 [node name="Beerbottle" parent="." instance=ExtResource("35_xdpck")]
 transform = Transform3D(0.913364, -3.0056e-12, 0.407144, 2.91038e-10, 1, 0, -0.407144, 0, 0.913364, 148.943, -9.94922, 99.434)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("35_qbixk")
+
+[node name="TutorialText" type="CanvasLayer" parent="Node"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node/TutorialText"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -484.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="Node/TutorialText/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TUTORIAL
+
+move : W A S D
+Collect items by running into them.
+Explore, find out what you have to do.
+Be aware, you are not alone."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
