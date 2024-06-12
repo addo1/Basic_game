@@ -21,9 +21,9 @@ var wants_to_jump = false
 # the input vector that tells the player's movement direction
 var input_vector = Vector2.ZERO
 # the maximum speed the player can move
-@export var max_speed = 10
+@export var max_speed = 5
 # the acceleration applied when reaching target movement velocity
-@export var acceleration = 5
+@export var acceleration = 2
 # the rotation rate of the player's model (radians)
 @export var rotation_rate = 2*PI
 # should rotate the controller with the velocity?
