@@ -5,7 +5,7 @@ extends AudioStreamPlayer
 func _ready():
 	play(8.0)
 	get_node("../FPSCharacter/CoinStash").coins_changed.connect(AudioDecrease)
-	##get_node("../FPSCharacter/CoinStash_score").coins_changed.connect(AudioDecrease)
+	get_node("../FPSCharacter/CoinStash_score").score_changed.connect(AudioDecrease)
 	$Timer.timeout.connect(IncreaseAudio)
 
 func AudioDecrease(amount, delta):
