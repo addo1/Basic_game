@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnktoldpur2ry"
+path="res://.godot/imported/Skinwalker sounds.mp3-c649b7d7d35a709292c60a79f62f95f1.mp3str"
+
+[deps]
+
+source_file="res://audio/Skinwalker sounds.mp3"
+dest_files=["res://.godot/imported/Skinwalker sounds.mp3-c649b7d7d35a709292c60a79f62f95f1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

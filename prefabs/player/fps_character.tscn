@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3xk1qhglyujs"]
+[gd_scene load_steps=8 format=3 uid="uid://d3xk1qhglyujs"]
 
 [ext_resource type="PackedScene" uid="uid://civdxx5i35mqr" path="res://prefabs/player/base_character.tscn" id="1_sp3sl"]
 [ext_resource type="PackedScene" uid="uid://dnb3qrlyikcnj" path="res://prefabs/camera/fps_player_camera.tscn" id="2_sy5w8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfdebsk7whaun" path="res://prefabs/gameplay/shooting/shooting_hit_scan.tscn" id="4_ypnik"]
 [ext_resource type="PackedScene" uid="uid://fq1cbrk0ggvd" path="res://prefabs/player/coin_stash.tscn" id="5_wdddl"]
 [ext_resource type="PackedScene" uid="uid://b2c8rtep58x7y" path="res://prefabs/gameplay/health.tscn" id="6_grrvf"]
+[ext_resource type="AudioStream" uid="uid://dnktoldpur2ry" path="res://audio/Skinwalker sounds.mp3" id="7_y08tt"]
 
 [node name="FPSCharacter" node_paths=PackedStringArray("direction_driver") instance=ExtResource("1_sp3sl")]
 direction_driver = NodePath("FPSCameraRoot")
@@ -30,5 +31,8 @@ custom_shot_origin_transform = NodePath("../FPSCameraRoot/Camera3D")
 [node name="CoinStash" parent="." index="8" instance=ExtResource("5_wdddl")]
 
 [node name="Health" parent="." index="9" instance=ExtResource("6_grrvf")]
+
+[node name="Monstersound" type="AudioStreamPlayer3D" parent="." index="10"]
+stream = ExtResource("7_y08tt")
 
 [editable path="FPSCameraRoot"]

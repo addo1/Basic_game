@@ -145,6 +145,3 @@ func launch_character(launch_velocity, allow_air_control = true):
 
 func _character_died():
 	is_dead = true
-	
-	
-

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://20ji5o5tq41e"]
 
 [ext_resource type="PackedScene" uid="uid://s1sluri1n5x4" path="res://prefabs/gameplay/collectables/beerbottle2.glb" id="1_87cs7"]
-[ext_resource type="AudioStream" uid="uid://ckih6p2h2glj" path="res://audio/sfx/coin.ogg" id="2_ivcia"]
+[ext_resource type="AudioStream" uid="uid://bo4mbb6exer0k" path="res://audio/beerclipped.mp3" id="2_wjunl"]
 
 [sub_resource type="GDScript" id="GDScript_epwnr"]
 resource_name = "beerbottle"
@@ -29,9 +29,9 @@ func _on_coin_body_entered(body):
 		visible = false
 		print(coin_stash.score_in_stash)
 		# play the coin added sound and monitor when the sound is finished
-		##$CoinSound.play()
-		##$CoinSound.finished.connect(_on_coin_sound_finished)
-		##ollected.emit()
+		$Beerpickupsound.play()
+		$Beerpickupsound.finished.connect(_on_coin_sound_finished)
+		collected.emit()
 
 func _on_coin_sound_finished():
 	# remove the coin from the scene once the sound is finished
@@ -84,7 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0137794, 0.939816, 2.40927e
 shape = SubResource("SphereShape3D_p4ogq")
 
 [node name="BeerRoot" type="Node3D" parent="."]
-transform = Transform3D(0.00119598, 0, 0.399998, 0, 0.4, 0, -0.399998, 0, 0.00119598, 0, 1.49857, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1, 0)
 
 [node name="Beerbottle" parent="BeerRoot" instance=ExtResource("1_87cs7")]
 
@@ -96,6 +96,6 @@ autoplay = "new_animation"
 
 [node name="Beerpickupsound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(0.743145, 0, -0.669131, 0, 1, 0, 0.669131, 0, 0.743145, 0, 0.877702, 0)
-stream = ExtResource("2_ivcia")
+stream = ExtResource("2_wjunl")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
