@@ -163,12 +163,37 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 2.0
-offset_right = 9060.0
-offset_bottom = 4741.0
+offset_top = 1.0
+offset_right = 9036.0
+offset_bottom = 4740.0
 mouse_filter = 2
 color = Color(1, 0, 1, 0.117647)
+
+[node name="TutorialText" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialText"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -484.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextEdit" type="Label" parent="TutorialText/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TUTORIAL
+
+move : W A S D
+Collect items by running into them.
+Explore, find out what you have to do.
+
+Collect all the beers to become unbeatable beerman
+Be aware, you are not alone."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="TitleScreen/PlayBtn" to="." method="show_level_select"]
 [connection signal="pressed" from="TitleScreen/ExitBtn" to="." method="exit_game"]

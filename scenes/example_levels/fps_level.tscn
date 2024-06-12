@@ -4268,6 +4268,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="TextEdit" type="Label" parent="Node/TutorialText/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "TUTORIAL
