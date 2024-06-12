@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=70 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -42,6 +42,7 @@
 [ext_resource type="Script" path="res://scripts/menu/TutorialText.gd" id="35_qbixk"]
 [ext_resource type="PackedScene" uid="uid://20ji5o5tq41e" path="res://prefabs/gameplay/collectables/beerbottle.tscn" id="35_xdpck"]
 [ext_resource type="AudioStream" uid="uid://ckih6p2h2glj" path="res://audio/sfx/coin.ogg" id="38_qvb0l"]
+[ext_resource type="PackedScene" uid="uid://dkfde07dqwqt5" path="res://scenes/node_2d.tscn" id="43_yb823"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8s7u3"]
 panorama = ExtResource("2_8wknx")
@@ -4282,6 +4283,8 @@ Explore, find out what you have to do.
 Be aware, you are not alone."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Plus_animation" parent="." instance=ExtResource("43_yb823")]
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
