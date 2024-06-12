@@ -1,36 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://20ji5o5tq41e"]
+[gd_scene load_steps=7 format=3 uid="uid://20ji5o5tq41e"]
 
 [ext_resource type="PackedScene" uid="uid://s1sluri1n5x4" path="res://prefabs/gameplay/collectables/beerbottle2.glb" id="1_87cs7"]
+[ext_resource type="AudioStream" uid="uid://ckih6p2h2glj" path="res://audio/sfx/coin.ogg" id="2_ivcia"]
 
 [sub_resource type="GDScript" id="GDScript_epwnr"]
 resource_name = "beerbottle"
 script/source = "extends Area3D
 
-# how much the pickup will heal
-@export var heal_amount = 10
+# the value of the collectable coin
+@export var value = 1
+
+signal collected
 
 func _ready():
-	# connect the body_entered signal to the _on_pickup_body_entered function when starting play
-	body_entered.connect(_on_pickup_body_entered)
+	# connect the body_entered signal to the _on_coin_body_entered function when starting play
+	body_entered.connect(_on_coin_body_entered)
 
-func _on_pickup_body_entered(body):
-	# check if the body entered has the Health node
+func _on_coin_body_entered(body):
+	# check if the body entered has the CoinStash node
 	# if it doesn't, do nothing
-	if body.has_node(\"Health\"):
-		var health_node = body.get_node(\"Health\")
-		if health_node != null:
-			health_node.heal(heal_amount)
-			# disable the health trigger
-			set_deferred(\"monitoring\", false)
-			set_deferred(\"monitorable\", false)
-			# hide the visual
-			visible = false
-			# play the health sound and wait for it to finish
-			$HealthSound.play()
-			$HealthSound.finished.connect(_on_health_sound_finished)
+	if body.has_node(\"CoinStash_score\"):
+		var coin_stash = body.get_node(\"CoinStash_score\")
+		coin_stash.add_coins(value)
+		# disable the coin trigger
+		set_deferred(\"monitorable\", false)
+		set_deferred(\"monitoring\", false)
+		# hide the coin
+		visible = false
+		print(coin_stash.score_in_stash)
+		# play the coin added sound and monitor when the sound is finished
+		##$CoinSound.play()
+		##$CoinSound.finished.connect(_on_coin_sound_finished)
+		##ollected.emit()
 
-func _on_health_sound_finished():
-	# destroy the pickup when sound is finished
+func _on_coin_sound_finished():
+	# remove the coin from the scene once the sound is finished
 	queue_free()
 "
 
@@ -71,6 +75,8 @@ _data = {
 
 [node name="Area3D" type="Area3D"]
 transform = Transform3D(0.725445, 0, -0.68828, 0, 1, 0, 0.68828, 0, 0.725445, 0, 1.14694, 0)
+collision_layer = 0
+collision_mask = 16
 script = SubResource("GDScript_epwnr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -90,5 +96,6 @@ autoplay = "new_animation"
 
 [node name="Beerpickupsound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(0.743145, 0, -0.669131, 0, 1, 0, 0.669131, 0, 0.743145, 0, 0.877702, 0)
+stream = ExtResource("2_ivcia")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

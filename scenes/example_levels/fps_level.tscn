@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=68 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -40,7 +40,6 @@
 [ext_resource type="Script" path="res://scenes/example_levels/timer_label.gd" id="35_k2qku"]
 [ext_resource type="Script" path="res://scripts/menu/TutorialText.gd" id="35_qbixk"]
 [ext_resource type="PackedScene" uid="uid://20ji5o5tq41e" path="res://prefabs/gameplay/collectables/beerbottle.tscn" id="35_xdpck"]
-[ext_resource type="PackedScene" uid="uid://cdu1t1enirmun" path="res://prefabs/gameplay/collectables/coin.tscn" id="37_cbgsp"]
 [ext_resource type="AudioStream" uid="uid://ckih6p2h2glj" path="res://audio/sfx/coin.ogg" id="38_qvb0l"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8s7u3"]
@@ -4221,7 +4220,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, 82.5201)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin"]
 
-[node name="Coin" parent="collectibles/ScoreCoin/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin"]
 
@@ -4237,7 +4236,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, -29.8418)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin2"]
 
-[node name="Coin" parent="collectibles/ScoreCoin2/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin2/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin2"]
 
@@ -4253,7 +4252,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.633, 1.22, -29.8418)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin3"]
 
-[node name="Coin" parent="collectibles/ScoreCoin3/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin3/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin3"]
 
@@ -4269,7 +4268,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2002, 1.22, 74.4139)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin4"]
 
-[node name="Coin" parent="collectibles/ScoreCoin4/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin4/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin4"]
 
@@ -4285,7 +4284,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.559, 1.22, -6.75916)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin5"]
 
-[node name="Coin" parent="collectibles/ScoreCoin5/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin5/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin5"]
 
@@ -4301,7 +4300,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8286, 2.02587, -91.6098)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin6"]
 
-[node name="Coin" parent="collectibles/ScoreCoin6/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin6/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin6"]
 
@@ -4317,7 +4316,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -77.536)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin7"]
 
-[node name="Coin" parent="collectibles/ScoreCoin7/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin7/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin7"]
 
@@ -4333,7 +4332,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -104.067)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin8"]
 
-[node name="Coin" parent="collectibles/ScoreCoin8/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin8/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin8"]
 
@@ -4349,7 +4348,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5164, 2.02587, -95.0775)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin9"]
 
-[node name="Coin" parent="collectibles/ScoreCoin9/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin9/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin9"]
 
@@ -4365,7 +4364,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7114, 2.02587, -72.1055)
 
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin10"]
 
-[node name="Coin" parent="collectibles/ScoreCoin10/Node3D" instance=ExtResource("37_cbgsp")]
+[node name="Area3D" parent="collectibles/ScoreCoin10/Node3D" instance=ExtResource("35_xdpck")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin10"]
 
@@ -4386,9 +4385,6 @@ offset_bottom = 48.0
 grow_horizontal = 2
 script = ExtResource("6_r1t6d")
 health_node = NodePath("../../FPSCharacter/Health")
-
-[node name="Beerbottle" parent="." instance=ExtResource("35_xdpck")]
-transform = Transform3D(0.913364, -3.0056e-12, 0.407144, 2.91038e-10, 1, 0, -0.407144, 0, 0.913364, 148.943, -9.94922, 99.434)
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("35_qbixk")
