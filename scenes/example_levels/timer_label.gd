@@ -11,6 +11,6 @@ func _process(delta):
 	var mins = fmod(time, 60*60)/60
 	var time_passed = "%02d : %02d . %03d" % [mins, secs, mils]
 	text = time_passed
-	if mins > 0.1:
+	if mins > 5.0:
 		get_node("/root/Game/FPSLevel/LossTracker").trigger_loss()
 pass
