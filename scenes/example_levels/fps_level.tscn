@@ -4230,8 +4230,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, 82.5201)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin"]
-
 [node name="ScoreCoin2" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, -29.8418)
 
@@ -4245,8 +4243,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, -29.8418)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin2"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin2"]
 
 [node name="ScoreCoin3" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.633, 1.22, -29.8418)
@@ -4262,8 +4258,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.633, 1.22, -29.8418)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin3"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin3"]
-
 [node name="ScoreCoin4" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2002, 1.22, 74.4139)
 
@@ -4277,8 +4271,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2002, 1.22, 74.4139)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin4"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin4"]
 
 [node name="ScoreCoin5" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.559, 1.22, -6.75916)
@@ -4294,8 +4286,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.559, 1.22, -6.75916)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin5"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin5"]
-
 [node name="ScoreCoin6" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8286, 2.02587, -91.6098)
 
@@ -4309,8 +4299,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8286, 2.02587, -91.6098)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin6"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin6"]
 
 [node name="ScoreCoin7" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -77.536)
@@ -4326,8 +4314,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -77.536)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin7"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin7"]
-
 [node name="ScoreCoin8" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -104.067)
 
@@ -4341,8 +4327,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -104.067)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin8"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin8"]
 
 [node name="ScoreCoin9" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5164, 2.02587, -95.0775)
@@ -4358,8 +4342,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5164, 2.02587, -95.0775)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin9"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin9"]
-
 [node name="ScoreCoin10" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7114, 2.02587, -72.1055)
 
@@ -4373,8 +4355,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7114, 2.02587, -72.1055)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin10"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin10"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
