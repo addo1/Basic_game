@@ -54,12 +54,14 @@ radiance_size = 2
 background_mode = 2
 background_energy_multiplier = 0.16
 sky = SubResource("Sky_yi8dq")
-sky_custom_fov = 104.2
+sky_custom_fov = 90.9
 ambient_light_source = 3
 ambient_light_color = Color(0.270588, 0.317647, 0.317647, 1)
 ambient_light_sky_contribution = 0.9
+ambient_light_energy = 2.86
 reflected_light_source = 2
-fog_light_color = Color(0.176471, 0.196078, 0.227451, 1)
+fog_enabled = true
+fog_light_color = Color(0.216583, 0.23934, 0.275751, 1)
 fog_light_energy = 0.5
 fog_sun_scatter = 0.24
 fog_density = 0.07
@@ -164,8 +166,8 @@ script = ExtResource("4_ku5v6")
 [node name="SpotLight3D" type="SpotLight3D" parent="FPSCharacter"]
 transform = Transform3D(0.997424, 0.0499339, 0.0514853, -0.0456838, 0.995694, -0.0806589, -0.0552913, 0.0780991, 0.995411, 0.16256, 0.937548, 1.76692)
 light_color = Color(0.721569, 0.788235, 0.831373, 1)
-light_energy = 3.743
-spot_range = 24.606
+light_energy = 6.814
+spot_range = 29.0311
 spot_angle = 37.7379
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -187,154 +189,40 @@ omni_range = 2.264
 omni_attenuation = 2.07053
 
 [node name="Enemy" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, 0, -1.15648, 0, 1.45504, 0, 0.979861, 0, -1.55658, 124.392, -9.07193, 61.2113)
+transform = Transform3D(-1.31886, -8.10019e-12, -1.15648, -1.16415e-10, 1.45504, -2.32831e-10, 0.979862, -4.65661e-10, -1.55658, 84.6199, -9.08315, 83.8251)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy2" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, -8.02913e-12, -1.15648, -1.16415e-10, 1.45504, -2.32831e-10, 0.979861, -2.91038e-10, -1.55658, 82.9995, -9.08696, 93.4689)
+transform = Transform3D(1.59852, -0.000579807, -0.44828, 0.000415341, 1.45504, -0.00127955, 0.379822, 0.000849065, 1.88665, -114.598, 9.98172, 107.488)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy3" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, -8.13571e-12, -1.15648, -1.45519e-10, 1.45504, -3.49246e-10, 0.979862, -5.23869e-10, -1.55658, 101.344, -9.05765, 20.2971)
+transform = Transform3D(0.301952, -0.000554581, -1.90614, -0.000141774, 1.45504, -0.000783196, 1.61504, 0.000231414, 0.35638, -143.991, -9.06642, 2.75062)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy4" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, -1.54756e-11, -1.15648, -2.32831e-10, 1.45504, -4.07454e-10, 0.979862, -6.98492e-10, -1.55658, 159.626, -9.05069, 11.7914)
+transform = Transform3D(-1.31886, -2.27445e-11, -1.15648, -2.91038e-10, 1.45504, -5.82077e-10, 0.979862, -1.04774e-09, -1.55658, 0.783489, -10.1053, 50.0824)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy5" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, -4.46647e-11, -1.15648, -2.61934e-10, 1.45504, -4.65661e-10, 0.979862, -9.31323e-10, -1.55658, 166.789, -9.02484, -54.2455)
+transform = Transform3D(-1.31886, -5.17915e-11, -1.15648, -2.91038e-10, 1.45504, -4.65661e-10, 0.979862, -9.8953e-10, -1.55658, -44.692, -9.03823, -54.204)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy6" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, -1.03078e-10, -1.15648, -4.94765e-10, 1.45504, -6.40284e-10, 0.979863, -1.45519e-09, -1.55658, 167.352, -9.00066, -117.026)
+transform = Transform3D(-1.1749, 0.000475114, 1.35556, 0.000827744, 1.45504, 9.3556e-05, -1.14854, 0.000562622, -1.38667, -121.406, -18.056, -96.0403)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy7" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, -1.03142e-10, -1.15648, -5.52973e-10, 1.45504, -7.567e-10, 0.979863, -1.62981e-09, -1.55658, 106.466, -9.00451, -117.014)
+transform = Transform3D(1.5587, -0.000603477, -0.613255, 0.00035906, 1.45504, -0.00127191, 0.519601, 0.000804828, 1.83965, 36.1248, -9.10128, 123.031)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy8" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31886, -1.03192e-10, -1.15648, -5.82077e-10, 1.45504, -8.14907e-10, 0.979863, -1.74623e-09, -1.55658, 106.479, -9.02958, -51.8307)
+transform = Transform3D(-0.768517, -0.00024991, -1.71396, -0.000146862, 1.45504, -0.000285096, 1.45221, 1.48927e-05, -0.907039, 106.479, -8.09155, -51.8304)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="Enemy9" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31887, -1.03256e-10, -1.15648, -5.82077e-10, 1.45504, -8.73115e-10, 0.979864, -1.92085e-09, -1.55658, 82.3092, -9.05238, 3.46706)
+transform = Transform3D(-1.31887, -1.10269e-10, -1.15648, -6.69388e-10, 1.45504, -1.04774e-09, 0.979864, -2.21189e-09, -1.55658, 47.4845, -9.07189, 0.125329)
 aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
-
-[node name="Enemy10" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31887, -1.32431e-10, -1.15649, -6.69388e-10, 1.45505, -9.8953e-10, 0.979864, -2.09548e-09, -1.55658, 26.4791, -9.05215, -6.31536)
-aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
-
-[node name="Enemy11" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31887, -1.90845e-10, -1.15649, -8.44011e-10, 1.45505, -1.10595e-09, 0.979864, -2.61934e-09, -1.55658, -26.9808, -9.0105, -123.38)
-aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
-
-[node name="Enemy12" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31887, -1.90958e-10, -1.15649, -9.02219e-10, 1.45505, -1.22236e-09, 0.979865, -2.91038e-09, -1.55658, -90.2054, -9.05011, -30.8154)
-aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
-
-[node name="Enemy13" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31887, -1.91051e-10, -1.15649, -9.60426e-10, 1.45505, -1.39698e-09, 0.979865, -3.14321e-09, -1.55658, -150.466, -9.048, -46.2025)
-aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
-
-[node name="Enemy14" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31887, -2.3482e-10, -1.15649, -1.04774e-09, 1.45505, -1.57161e-09, 0.979865, -3.43425e-09, -1.55658, -7.11193, -9.04079, -41.3792)
-aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
-
-[node name="Enemy15" parent="." instance=ExtResource("10_kdx46")]
-transform = Transform3D(-1.31887, -2.63995e-10, -1.15649, -1.16415e-09, 1.45505, -1.57161e-09, 0.979866, -3.60887e-09, -1.55658, 26.8182, -9.07876, 62.9356)
-aggro_range = 16.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enemy15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
-light_color = Color(0.827451, 0.207843, 0.172549, 1)
-light_energy = 0.3
-omni_range = 2.31221
 
 [node name="VictoryScreen" parent="." instance=ExtResource("11_vq2hs")]
 metadata/_edit_use_anchors_ = true
@@ -1156,6 +1044,9 @@ shape = SubResource("ConcavePolygonShape3D_r1f5r")
 
 [node name="bison" parent="." instance=ExtResource("25_6plwv")]
 
+[node name="OmniLight3D" parent="bison" index="2"]
+light_energy = 7.391
+
 [node name="Area3D" parent="bison" index="3"]
 transform = Transform3D(1, 3.72529e-09, 2.98023e-08, 3.72529e-09, 1, -3.72529e-09, 0, -3.72529e-09, 1, 0, 0, 0)
 collision_layer = 0
@@ -1181,7 +1072,7 @@ grow_vertical = 0
 [node name="TextEdit" type="Label" parent="bison/Area3D/BisonText/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "BISON: Hello traveler, I have been expecting you. You see there is a Madman walking around this park.
+text = "BISON: Hello traveler, I have been expecting you. You see there is a Madman infestation in this park.
 Unfortunatelly, I lost my source of power. Bring me my favourite Šaltibarščiai. I need three portions of
 this holly dish. Then, I will be able to give you a nasty gun so you could set this park free."
 horizontal_alignment = 1
@@ -1202,7 +1093,7 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 4
 text = "BISON: Bring me more Šaltibarščiai! It will be somewhere around the park.
-We must stop the Madman!"
+We must stop the infestation!"
 horizontal_alignment = 1
 
 [node name="BisonText3" type="CanvasLayer" parent="bison/Area3D" index="3"]
@@ -1222,7 +1113,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "BISON: Traveller, you have proven yourself! Thank you for bringing me my sweet Šaltibarščiai.
 Now I can finally provide you the weapon needed for stopping the Madman! The golden orb will
-grant you the shooting power. Free the park and free yourself!"
+grant you the shooting power. Kill one, and they all collapse. Free the park and free yourself!"
 horizontal_alignment = 1
 
 [node name="trees_no_leaves2" type="Node" parent="."]
@@ -4181,20 +4072,13 @@ spot_angle = 53.0064
 [node name="collectibles" type="Node" parent="."]
 
 [node name="Kaunascollectible" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 149.074, 1.21741, 90.102)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, -126.965, 22.3289, 86.4618)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/Kaunascollectible"]
-transform = Transform3D(1, -1.89787e-08, -5.67525e-09, 1.97531e-12, 1, -6.40284e-10, 0, 0, 0.99999, -0.00012207, 1.82746, 0.000701904)
-light_color = Color(0.962582, 0.000857305, 0.977407, 1)
-light_energy = 0.515
-omni_range = 1.984
-omni_attenuation = 0.435276
-
 [node name="Kaunascollectible2" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 153.923, 1.21741, 87.225)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 159.372, 1.21741, -91.7714)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
@@ -4207,7 +4091,7 @@ omni_range = 1.984
 omni_attenuation = 0.435276
 
 [node name="Kaunascollectible3" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 145.737, 1.21741, 93.9618)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, -135.822, -7.95392, -77.4936)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
@@ -4220,7 +4104,7 @@ omni_range = 1.984
 omni_attenuation = 0.435276
 
 [node name="ScoreCoin" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, 82.5201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.081, 1.22, 73.4168)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin"]
 
@@ -4232,8 +4116,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, 82.5201)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin"]
 
 [node name="ScoreCoin2" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, -29.8418)
@@ -4249,10 +4131,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.779, 1.22, -29.8418)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin2"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin2"]
-
 [node name="ScoreCoin3" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.633, 1.22, -29.8418)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3406, 1.22, -29.8418)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin3"]
 
@@ -4265,10 +4145,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.633, 1.22, -29.8418)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin3"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin3"]
-
 [node name="ScoreCoin4" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2002, 1.22, 74.4139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0743, 1.22, 81.2601)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin4"]
 
@@ -4280,8 +4158,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2002, 1.22, 74.4139)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin4"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin4"]
 
 [node name="ScoreCoin5" type="Area3D" parent="collectibles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.559, 1.22, -6.75916)
@@ -4297,10 +4173,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.559, 1.22, -6.75916)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin5"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin5"]
-
 [node name="ScoreCoin6" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8286, 2.02587, -91.6098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38502, -2.59774, -85.502)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin6"]
 
@@ -4313,10 +4187,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8286, 2.02587, -91.6098)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin6"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin6"]
-
 [node name="ScoreCoin7" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -77.536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.715, -0.636966, -88.8579)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin7"]
 
@@ -4329,10 +4201,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -77.536)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin7"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin7"]
-
 [node name="ScoreCoin8" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -104.067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7828, 0.69773, -71.381)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin8"]
 
@@ -4345,10 +4215,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1074, 2.02587, -104.067)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin8"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin8"]
-
 [node name="ScoreCoin9" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5164, 2.02587, -95.0775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.9437, 0.909815, -5.19773)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin9"]
 
@@ -4361,10 +4229,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5164, 2.02587, -95.0775)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin9"]
 stream = ExtResource("38_qvb0l")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin9"]
-
 [node name="ScoreCoin10" type="Area3D" parent="collectibles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7114, 2.02587, -72.1055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.2327, -0.662081, -105.185)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collectibles/ScoreCoin10"]
 
@@ -4376,8 +4242,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7114, 2.02587, -72.1055)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="collectibles/ScoreCoin10"]
 stream = ExtResource("38_qvb0l")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="collectibles/ScoreCoin10"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -4429,12 +4293,6 @@ vertical_alignment = 1
 [connection signal="died" from="Enemy7/Health" to="VictoryTracker" method="trigger_victory"]
 [connection signal="died" from="Enemy8/Health" to="VictoryTracker" method="trigger_victory"]
 [connection signal="died" from="Enemy9/Health" to="VictoryTracker" method="trigger_victory"]
-[connection signal="died" from="Enemy10/Health" to="VictoryTracker" method="trigger_victory"]
-[connection signal="died" from="Enemy11/Health" to="VictoryTracker" method="trigger_victory"]
-[connection signal="died" from="Enemy12/Health" to="VictoryTracker" method="trigger_victory"]
-[connection signal="died" from="Enemy13/Health" to="VictoryTracker" method="trigger_victory"]
-[connection signal="died" from="Enemy14/Health" to="VictoryTracker" method="trigger_victory"]
-[connection signal="died" from="Enemy15/Health" to="VictoryTracker" method="trigger_victory"]
 
 [editable path="FPSCharacter"]
 [editable path="FPSCharacter/FPSCameraRoot"]
@@ -4457,18 +4315,6 @@ vertical_alignment = 1
 [editable path="Enemy8/DamageArea"]
 [editable path="Enemy9"]
 [editable path="Enemy9/DamageArea"]
-[editable path="Enemy10"]
-[editable path="Enemy10/DamageArea"]
-[editable path="Enemy11"]
-[editable path="Enemy11/DamageArea"]
-[editable path="Enemy12"]
-[editable path="Enemy12/DamageArea"]
-[editable path="Enemy13"]
-[editable path="Enemy13/DamageArea"]
-[editable path="Enemy14"]
-[editable path="Enemy14/DamageArea"]
-[editable path="Enemy15"]
-[editable path="Enemy15/DamageArea"]
 [editable path="bison"]
 [editable path="collectibles/Kaunascollectible"]
 [editable path="collectibles/Kaunascollectible2"]

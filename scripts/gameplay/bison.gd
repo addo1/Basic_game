@@ -31,11 +31,11 @@ func _text_on_bison_enter(coin_stash):
 	print(text_counter)
 	if text_counter > 0 and coin_stash.coins_in_stash < 3:
 		bison_text2.visible = true
-		await get_tree().create_timer(15.0).timeout
+		await get_tree().create_timer(7.0).timeout
 		bison_text2.visible = false
 	if text_counter == 0:
 		bison_text.visible = true
-		await get_tree().create_timer(7.0).timeout
+		await get_tree().create_timer(17.0).timeout
 		bison_text.visible = false
 		text_counter += 1
 	if text_counter == 1 and coin_stash.coins_in_stash == 3:
