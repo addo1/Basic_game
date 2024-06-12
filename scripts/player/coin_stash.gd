@@ -3,6 +3,7 @@ extends Node
 var coins_in_stash = 0
 
 signal coins_changed(amount, delta)
+signal score_changed(amount, delta)
 
 func add_coins(amount):
 	if amount < 0:

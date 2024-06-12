@@ -18,6 +18,8 @@ var chased_target = null
 var is_dead = false
 var start_movement = false
 
+signal score_changed
+
 func _ready():
 	if has_node("Health"):
 		get_node("Health").died.connect(_on_died)

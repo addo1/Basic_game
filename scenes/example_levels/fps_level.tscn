@@ -4100,7 +4100,7 @@ script = ExtResource("30_1m1bl")
 transform = Transform3D(-0.620511, -2.3519e-12, 0.784198, 0, 1, 2.91038e-11, -0.784198, 0, -0.620511, 0, -0.367495, 0)
 
 [node name="Kaunascollectible2" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 159.372, 1.21741, 72.2286)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 159.372, 1.21741, -91.7714)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
@@ -4116,7 +4116,7 @@ omni_range = 1.984
 omni_attenuation = 0.435276
 
 [node name="Kaunascollectible3" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 157.178, 3.04608, 54.5064)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, -135.822, -7.95392, -77.4936)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
