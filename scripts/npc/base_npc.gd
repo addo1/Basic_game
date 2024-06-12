@@ -152,6 +152,10 @@ func _on_died():
 		damage_area.set_deferred("monitorable", false)
 		velocity = Vector3.ZERO
 		$monster/AnimationPlayer.play("dying")
+		get_node("/root/Game/FPSLevel/FPSCharacter/CoinStash_score").score_in_stash += 100
+		emit_signal("score_changed", get_node("/root/Game/FPSLevel/FPSCharacter/CoinStash_score").score_in_stash, 100)
+		var animation_player = get_node("/root/Game/FPSLevel/Plus_animation_100/show_plus")
+		animation_player.play("show_plus")
 
 func _health_changed(health, delta, max_health):
 	print("Health changed:", health, delta, max_health)

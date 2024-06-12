@@ -8,6 +8,8 @@ func _ready():
 func announce_loss():
 	visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$timer_label.time_on = false
+	return
 
 func main_menu_pressed():
 	get_parent().get_parent().load_initial_scene()

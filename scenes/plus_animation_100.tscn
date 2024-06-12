@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkfde07dqwqt5"]
+[gd_scene load_steps=3 format=3 uid="uid://btholbapk7pxn"]
 
 [sub_resource type="Animation" id="Animation_p3n5t"]
 resource_name = "show_plus"
@@ -42,7 +42,7 @@ _data = {
 "show_plus": SubResource("Animation_p3n5t")
 }
 
-[node name="Plus_animation_1" type="Node2D"]
+[node name="Plus_animation_100" type="Node2D"]
 
 [node name="show_plus" type="AnimationPlayer" parent="."]
 libraries = {
@@ -69,5 +69,5 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 31
-text = "+1"
+text = "+100"
 horizontal_alignment = 1

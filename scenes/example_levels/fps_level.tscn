@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=72 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -43,6 +43,8 @@
 [ext_resource type="PackedScene" uid="uid://20ji5o5tq41e" path="res://prefabs/gameplay/collectables/beerbottle.tscn" id="35_xdpck"]
 [ext_resource type="AudioStream" uid="uid://ckih6p2h2glj" path="res://audio/sfx/coin.ogg" id="38_qvb0l"]
 [ext_resource type="PackedScene" uid="uid://dkfde07dqwqt5" path="res://scenes/node_2d.tscn" id="43_yb823"]
+[ext_resource type="PackedScene" uid="uid://chttnnopy5qra" path="res://scenes/plus_animation_10.tscn" id="44_s0twu"]
+[ext_resource type="PackedScene" uid="uid://btholbapk7pxn" path="res://scenes/plus_animation_100.tscn" id="45_m2dub"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8s7u3"]
 panorama = ExtResource("2_8wknx")
@@ -253,6 +255,22 @@ player = NodePath("../FPSCharacter")
 loss_screen = NodePath("../LossScreen")
 
 [node name="LossScreen" parent="." instance=ExtResource("14_fni2i")]
+
+[node name="timer_label" type="Label" parent="LossScreen"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 183.0
+offset_right = 709.0
+offset_bottom = 237.0
+script = ExtResource("35_k2qku")
+
+[node name="Label" type="Label" parent="LossScreen"]
+layout_mode = 0
+offset_left = 621.0
+offset_top = 213.0
+offset_right = 661.0
+offset_bottom = 236.0
+script = ExtResource("10_chl65")
 
 [node name="LandscapeMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5995, 0)
@@ -4073,16 +4091,22 @@ spot_angle = 53.0064
 [node name="collectibles" type="Node" parent="."]
 
 [node name="Kaunascollectible" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, -126.965, 22.3289, 86.4618)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 145.347, 2.27762, 86.4618)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
 
+[node name="soup" parent="collectibles/Kaunascollectible/Node3D" index="0"]
+transform = Transform3D(-0.620511, -2.3519e-12, 0.784198, 0, 1, 2.91038e-11, -0.784198, 0, -0.620511, 0, -0.367495, 0)
+
 [node name="Kaunascollectible2" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 159.372, 1.21741, -91.7714)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 159.372, 1.21741, 72.2286)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
+
+[node name="soup" parent="collectibles/Kaunascollectible2/Node3D" index="0"]
+transform = Transform3D(-0.620511, -2.3519e-12, 0.784198, 0, 1, 2.91038e-11, -0.784198, 0, -0.620511, -1.52588e-05, -0.367495, 7.62939e-06)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="collectibles/Kaunascollectible2"]
 transform = Transform3D(1, -1.89787e-08, -5.67525e-09, 1.97531e-12, 1, -6.40284e-10, 0, 0, 0.99999, -0.00012207, 1.82746, 0.000701904)
@@ -4092,10 +4116,13 @@ omni_range = 1.984
 omni_attenuation = 0.435276
 
 [node name="Kaunascollectible3" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, -135.822, -7.95392, -77.4936)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 157.178, 3.04608, 54.5064)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
+
+[node name="soup" parent="collectibles/Kaunascollectible3/Node3D" index="0"]
+transform = Transform3D(-0.620511, -2.3519e-12, 0.784198, 0, 1, 2.91038e-11, -0.784198, 0, -0.620511, -1.52588e-05, -0.367495, 7.62939e-06)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="collectibles/Kaunascollectible3"]
 transform = Transform3D(1, -1.89787e-08, -5.67525e-09, 1.97531e-12, 1, -6.40284e-10, 0, 0, 0.99999, -0.00012207, 1.82746, 0.000701904)
@@ -4284,7 +4311,11 @@ Be aware, you are not alone."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Plus_animation" parent="." instance=ExtResource("43_yb823")]
+[node name="Plus_animation_1" parent="." instance=ExtResource("43_yb823")]
+
+[node name="Plus_animation_10" parent="." instance=ExtResource("44_s0twu")]
+
+[node name="Plus_animation_100" parent="." instance=ExtResource("45_m2dub")]
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
