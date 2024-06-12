@@ -1,6 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlkamqxjin8r8"]
+[gd_scene load_steps=4 format=3 uid="uid://dlkamqxjin8r8"]
 
 [ext_resource type="Script" path="res://scripts/menu/main_menu.gd" id="1_kdx8m"]
+
+[sub_resource type="Animation" id="Animation_tvn6k"]
+resource_name = "Splash"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(545, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-201, -0.25, 0, 0, 314, 279, -0.5, 108.5, 0.4, -53, 278.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.8, 3.4)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjj5v"]
+_data = {
+"Splash": SubResource("Animation_tvn6k")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -68,16 +111,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.424
 anchor_top = 0.365
 anchor_right = 0.58
 anchor_bottom = 0.643
-offset_left = 0.280029
-offset_top = 0.199982
-offset_right = -74.4
-offset_bottom = -74.96
+offset_left = 2.27997
+offset_top = 15.7
+offset_right = -72.4
+offset_bottom = -59.4594
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.6, 1.6)
@@ -104,6 +148,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelSelect"]
+libraries = {
+"": SubResource("AnimationLibrary_yjj5v")
+}
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1282.0
@@ -114,3 +163,5 @@ color = Color(1, 0, 1, 0.117647)
 [connection signal="pressed" from="TitleScreen/PlayBtn" to="." method="show_level_select"]
 [connection signal="pressed" from="TitleScreen/ExitBtn" to="." method="exit_game"]
 [connection signal="pressed" from="LevelSelect/HBoxContainer/FPSBtn" to="." method="start_fps_level"]
+[connection signal="animation_finished" from="LevelSelect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="ready" from="LevelSelect/AnimationPlayer" to="." method="_on_animation_player_ready"]
