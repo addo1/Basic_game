@@ -18,7 +18,7 @@ var chased_target = null
 var is_dead = false
 var start_movement = false
 
-signal score_changed
+signal score_changed(amount, delta)
 
 func _ready():
 	if has_node("Health"):
