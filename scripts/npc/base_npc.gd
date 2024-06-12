@@ -121,6 +121,7 @@ func _on_aggro_range_entered(body):
 		_set_navigation_target(chased_target.global_position)
 		$monster/AnimationPlayer.play("starting")
 		$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
+		##$Monstersound.play()
 		
 func _on_aggro_range_exited(body):
 	if body == chased_target:
@@ -161,4 +162,6 @@ func _health_changed(health, delta, max_health):
 		$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
 	else:
 		_on_died()
+		
+
 

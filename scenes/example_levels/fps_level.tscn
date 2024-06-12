@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=69 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -35,6 +35,7 @@
 [ext_resource type="Material" uid="uid://cx3otvxekoygm" path="res://prefabs/map_assets/spike.tres" id="31_2lxd2"]
 [ext_resource type="ArrayMesh" uid="uid://dwc3gg6fjc527" path="res://prefabs/map_assets/bench_simple.obj" id="32_7kab5"]
 [ext_resource type="AudioStream" uid="uid://dd5ril1s70nah" path="res://audio/[No Copyright Music]  Broken Piano _ Horror Music _ Royalty Free Music (128kbps).mp3" id="32_ojmg8"]
+[ext_resource type="Script" path="res://scenes/example_levels/levelsoundtrack.gd" id="33_je6xi"]
 [ext_resource type="ArrayMesh" uid="uid://de2yd03qwwqfl" path="res://prefabs/map_assets/tree downloaded.obj" id="34_6rkda"]
 [ext_resource type="ArrayMesh" uid="uid://cxhoka20rmyw8" path="res://prefabs/map_assets/tree downloaded_semileaves.obj" id="35_17b60"]
 [ext_resource type="Script" path="res://scenes/example_levels/timer_label.gd" id="35_k2qku"]
@@ -3840,6 +3841,11 @@ shape = SubResource("ConcavePolygonShape3D_r1f5r")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("32_ojmg8")
 autoplay = true
+script = ExtResource("33_je6xi")
+
+[node name="Timer" type="Timer" parent="AudioStreamPlayer"]
+wait_time = 18.0
+one_shot = true
 
 [node name="spikes" type="Node" parent="."]
 
