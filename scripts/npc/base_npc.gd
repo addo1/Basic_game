@@ -144,15 +144,14 @@ func launch_character(launch_velocity, _allow_air_control = true):
 	velocity = launch_velocity
 
 func _on_died():
-	print("Hello")
-	#is_dead = true
-	#$monster/AnimationPlayer.animation_finished.disconnect(_on_starting_animation_finished)
-	#if has_node("DamageArea"):
-		#var damage_area = get_node("DamageArea")
-		#damage_area.set_deferred("monitoring", false)
-		#damage_area.set_deferred("monitorable", false)
-		#velocity = Vector3.ZERO
-		#$monster/AnimationPlayer.play("dying")
+	is_dead = true
+	$monster/AnimationPlayer.animation_finished.disconnect(_on_starting_animation_finished)
+	if has_node("DamageArea"):
+		var damage_area = get_node("DamageArea")
+		damage_area.set_deferred("monitoring", false)
+		damage_area.set_deferred("monitorable", false)
+		velocity = Vector3.ZERO
+		$monster/AnimationPlayer.play("dying")
 
 func _health_changed(health, delta, max_health):
 	print("Health changed:", health, delta, max_health)

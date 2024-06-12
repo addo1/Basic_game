@@ -10,6 +10,7 @@ var is_blocking = false
 # unless friendly fire is allowed
 # team 0 is neutral and can damage everyone
 @export var team = 0
+@export var can_heal = false
 
 signal health_changed(health, delta, max_health)
 signal died()
@@ -34,9 +35,12 @@ func apply_damage(damage, damage_team = 0):
 		is_dead = true
 		emit_signal("died")
 	emit_signal("health_changed", current_health, -damage, max_health)
+	if can_heal == true:
+		heal(30)
 	return true
 
 func heal(amount):
+	await get_tree().create_timer(15.0).timeout
 	# don't heal if it's negative or the character is dead
 	if amount < 0 or is_dead:
 		return

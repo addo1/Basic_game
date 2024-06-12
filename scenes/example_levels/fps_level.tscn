@@ -158,6 +158,9 @@ infinite_ammo = false
 [node name="AmmoReloadSound" type="AudioStreamPlayer3D" parent="FPSCharacter/Shooting" index="3"]
 stream = ExtResource("2_aauvn")
 
+[node name="Health" parent="FPSCharacter" index="9"]
+can_heal = true
+
 [node name="CoinStash_score" parent="FPSCharacter" instance=ExtResource("3_2idge")]
 script = ExtResource("4_ku5v6")
 
@@ -4407,6 +4410,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="TextEdit" type="Label" parent="Node/TutorialText/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "TUTORIAL
