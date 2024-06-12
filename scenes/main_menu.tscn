@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlkamqxjin8r8"]
+[gd_scene load_steps=5 format=3 uid="uid://dlkamqxjin8r8"]
 
 [ext_resource type="Script" path="res://scripts/menu/main_menu.gd" id="1_kdx8m"]
+[ext_resource type="Texture2D" uid="uid://bvt878vkdkcr5" path="res://fb33c8b5-bd3a-4123-a24f-538d077991d0.webp" id="2_ks8hn"]
 
 [sub_resource type="Animation" id="Animation_tvn6k"]
 resource_name = "Splash"
@@ -86,11 +87,14 @@ text = "Exit"
 [node name="LevelSelect" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
+anchor_left = 0.5
+anchor_top = 0.499
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.28
+offset_right = 640.0
+offset_bottom = 359.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -113,15 +117,15 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.424
-anchor_top = 0.365
-anchor_right = 0.58
-anchor_bottom = 0.643
-offset_left = 2.27997
-offset_top = 15.7
-offset_right = -72.4
-offset_bottom = -59.4594
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -138.0
+offset_right = 25.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.6, 1.6)
@@ -133,8 +137,12 @@ custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
+icon = ExtResource("2_ks8hn")
+flat = true
+expand_icon = true
 
 [node name="Label" type="Label" parent="LevelSelect/HBoxContainer/FPSBtn"]
+visible = false
 self_modulate = Color(1, 0, 1, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -155,8 +163,10 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1282.0
-offset_bottom = 715.0
+offset_left = 24.0
+offset_top = 2.0
+offset_right = 9060.0
+offset_bottom = 4741.0
 mouse_filter = 2
 color = Color(1, 0, 1, 0.117647)
 

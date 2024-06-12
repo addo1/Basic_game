@@ -1,13 +1,17 @@
 extends Control
 
+var click_enable: bool = false
+
 func show_level_select():
 	$TitleScreen.visible = false
 	$LevelSelect.visible = true
 	var anim_player = $LevelSelect/AnimationPlayer
+	click_enable = true
 	anim_player.play("Splash")
 	
+	
 func _input(event):
-	if (event is InputEventKey):
+	if (event is InputEventKey and click_enable):
 		start_fps_level()
 		
 func start_fps_level():
