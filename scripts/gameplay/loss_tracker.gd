@@ -4,5 +4,5 @@ extends Node
 @export var loss_screen : LossScreen
 
 func trigger_loss():
-    loss_screen.announce_loss()
-    player.get_node("Input").set_handle_input(false)
+	loss_screen.announce_loss()
+	player.get_node("Input").set_handle_input(false)

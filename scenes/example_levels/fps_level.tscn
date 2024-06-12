@@ -231,6 +231,7 @@ aggro_range = 16.0
 metadata/_edit_use_anchors_ = true
 
 [node name="timer_label" type="Label" parent="VictoryScreen"]
+visible = false
 layout_mode = 0
 offset_left = 586.0
 offset_top = 183.0
@@ -239,11 +240,16 @@ offset_bottom = 237.0
 script = ExtResource("35_k2qku")
 
 [node name="Label" type="Label" parent="VictoryScreen"]
-layout_mode = 0
-offset_left = 621.0
-offset_top = 213.0
-offset_right = 661.0
-offset_bottom = 236.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 198.0
+offset_right = 20.0
+offset_bottom = 228.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
 script = ExtResource("10_chl65")
 
 [node name="VictoryTracker" parent="." node_paths=PackedStringArray("player", "victory_screen") instance=ExtResource("12_4sjd4")]
@@ -257,6 +263,7 @@ loss_screen = NodePath("../LossScreen")
 [node name="LossScreen" parent="." instance=ExtResource("14_fni2i")]
 
 [node name="timer_label" type="Label" parent="LossScreen"]
+visible = false
 layout_mode = 0
 offset_left = 586.0
 offset_top = 183.0
@@ -265,11 +272,16 @@ offset_bottom = 237.0
 script = ExtResource("35_k2qku")
 
 [node name="Label" type="Label" parent="LossScreen"]
-layout_mode = 0
-offset_left = 621.0
-offset_top = 213.0
-offset_right = 661.0
-offset_bottom = 236.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 202.0
+offset_right = 20.0
+offset_bottom = 232.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
 script = ExtResource("10_chl65")
 
 [node name="LandscapeMesh" type="MeshInstance3D" parent="."]
