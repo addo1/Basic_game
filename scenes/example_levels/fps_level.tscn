@@ -196,6 +196,146 @@ light_color = Color(0.827451, 0.207843, 0.172549, 1)
 light_energy = 0.3
 omni_range = 2.31221
 
+[node name="Enemy2" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31886, -8.02913e-12, -1.15648, -1.16415e-10, 1.45504, -2.32831e-10, 0.979861, -2.91038e-10, -1.55658, 82.9995, -9.08696, 93.4689)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy3" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31886, -8.13571e-12, -1.15648, -1.45519e-10, 1.45504, -3.49246e-10, 0.979862, -5.23869e-10, -1.55658, 101.344, -9.05765, 20.2971)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy4" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31886, -1.54756e-11, -1.15648, -2.32831e-10, 1.45504, -4.07454e-10, 0.979862, -6.98492e-10, -1.55658, 159.626, -9.05069, 11.7914)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy5" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31886, -4.46647e-11, -1.15648, -2.61934e-10, 1.45504, -4.65661e-10, 0.979862, -9.31323e-10, -1.55658, 166.789, -9.02484, -54.2455)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy6" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31886, -1.03078e-10, -1.15648, -4.94765e-10, 1.45504, -6.40284e-10, 0.979863, -1.45519e-09, -1.55658, 167.352, -9.00066, -117.026)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy7" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31886, -1.03142e-10, -1.15648, -5.52973e-10, 1.45504, -7.567e-10, 0.979863, -1.62981e-09, -1.55658, 106.466, -9.00451, -117.014)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy8" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31886, -1.03192e-10, -1.15648, -5.82077e-10, 1.45504, -8.14907e-10, 0.979863, -1.74623e-09, -1.55658, 106.479, -9.02958, -51.8307)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy9" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31887, -1.03256e-10, -1.15648, -5.82077e-10, 1.45504, -8.73115e-10, 0.979864, -1.92085e-09, -1.55658, 82.3092, -9.05238, 3.46706)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy10" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31887, -1.32431e-10, -1.15649, -6.69388e-10, 1.45505, -9.8953e-10, 0.979864, -2.09548e-09, -1.55658, 26.4791, -9.05215, -6.31536)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy11" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31887, -1.90845e-10, -1.15649, -8.44011e-10, 1.45505, -1.10595e-09, 0.979864, -2.61934e-09, -1.55658, -26.9808, -9.0105, -123.38)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy12" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31887, -1.90958e-10, -1.15649, -9.02219e-10, 1.45505, -1.22236e-09, 0.979865, -2.91038e-09, -1.55658, -90.2054, -9.05011, -30.8154)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy13" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31887, -1.91051e-10, -1.15649, -9.60426e-10, 1.45505, -1.39698e-09, 0.979865, -3.14321e-09, -1.55658, -150.466, -9.048, -46.2025)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy14" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31887, -2.3482e-10, -1.15649, -1.04774e-09, 1.45505, -1.57161e-09, 0.979865, -3.43425e-09, -1.55658, -7.11193, -9.04079, -41.3792)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
+[node name="Enemy15" parent="." instance=ExtResource("10_kdx46")]
+transform = Transform3D(-1.31887, -2.63995e-10, -1.15649, -1.16415e-09, 1.45505, -1.57161e-09, 0.979866, -3.60887e-09, -1.55658, 26.8182, -9.07876, 62.9356)
+aggro_range = 16.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0255165, 0.969857, -0.505463)
+light_color = Color(0.827451, 0.207843, 0.172549, 1)
+light_energy = 0.3
+omni_range = 2.31221
+
 [node name="VictoryScreen" parent="." instance=ExtResource("11_vq2hs")]
 metadata/_edit_use_anchors_ = true
 
@@ -4278,12 +4418,54 @@ vertical_alignment = 1
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy2/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy3/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy4/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy5/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy6/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy7/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy8/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy9/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy10/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy11/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy12/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy13/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy14/Health" to="VictoryTracker" method="trigger_victory"]
+[connection signal="died" from="Enemy15/Health" to="VictoryTracker" method="trigger_victory"]
 
 [editable path="FPSCharacter"]
 [editable path="FPSCharacter/FPSCameraRoot"]
 [editable path="AmmoPickup"]
 [editable path="Enemy"]
 [editable path="Enemy/DamageArea"]
+[editable path="Enemy2"]
+[editable path="Enemy2/DamageArea"]
+[editable path="Enemy3"]
+[editable path="Enemy3/DamageArea"]
+[editable path="Enemy4"]
+[editable path="Enemy4/DamageArea"]
+[editable path="Enemy5"]
+[editable path="Enemy5/DamageArea"]
+[editable path="Enemy6"]
+[editable path="Enemy6/DamageArea"]
+[editable path="Enemy7"]
+[editable path="Enemy7/DamageArea"]
+[editable path="Enemy8"]
+[editable path="Enemy8/DamageArea"]
+[editable path="Enemy9"]
+[editable path="Enemy9/DamageArea"]
+[editable path="Enemy10"]
+[editable path="Enemy10/DamageArea"]
+[editable path="Enemy11"]
+[editable path="Enemy11/DamageArea"]
+[editable path="Enemy12"]
+[editable path="Enemy12/DamageArea"]
+[editable path="Enemy13"]
+[editable path="Enemy13/DamageArea"]
+[editable path="Enemy14"]
+[editable path="Enemy14/DamageArea"]
+[editable path="Enemy15"]
+[editable path="Enemy15/DamageArea"]
 [editable path="bison"]
 [editable path="collectibles/Kaunascollectible"]
 [editable path="collectibles/Kaunascollectible2"]

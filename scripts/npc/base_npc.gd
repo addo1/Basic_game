@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 
-@export var movement_speed = 7.0
+@export var movement_speed = 25.0
 
 @export var is_patrolling = false
 @export var patrol_points: Array[Node3D]
@@ -10,6 +10,9 @@ extends CharacterBody3D
 
 @export var can_aggro = false
 @export var aggro_range = 200.0
+
+@export var attack_range = 18.0
+
 var chased_target = null
 
 var is_dead = false
@@ -33,6 +36,7 @@ func _ready():
 		var collision = CollisionShape3D.new()        
 		add_child(area)
 		area.body_entered.connect(_on_aggro_range_entered)
+		area.body_exited.connect(_on_aggro_range_exited)
 		area.collision_layer = 0
 		area.collision_mask = 16
 		area.add_child(collision)
@@ -63,10 +67,20 @@ func _init_navigation():
 func _physics_process(_delta):
 	if is_dead:
 		return
+		
+	#if chased_target != null and global_position.distance_to(chased_target.global_position) < 2000:
+		#start_movement = false
+		#return
 
 	if chased_target != null and start_movement:
 		_set_navigation_target(chased_target.global_position)
-	_process_movement()
+	var distance = 0
+	if chased_target != null:
+		distance = global_position.distance_to(chased_target.global_position)
+		#print(distance)
+		if distance > attack_range:
+			_process_movement(0)
+		_process_movement(1)
 
 func _on_velocity_computed(safe_velocity: Vector3):
 	if is_dead:
@@ -80,11 +94,11 @@ func _choose_next_patrol_point_index(current_point_index, patrol_point_num):
 	else:
 		return current_point_index + 1
 
-func _process_movement():
+func _process_movement(vel_magnitude):
 	if not start_movement:
 		return
 	var next_path_position: Vector3 = nav_agent.get_next_path_position()
-	var new_velocity: Vector3 = global_position.direction_to(next_path_position) * movement_speed
+	var new_velocity: Vector3 = global_position.direction_to(next_path_position) * movement_speed * vel_magnitude
 	if nav_agent.avoidance_enabled:
 		nav_agent.set_velocity(new_velocity)
 	else:
@@ -108,6 +122,17 @@ func _on_aggro_range_entered(body):
 		$monster/AnimationPlayer.play("starting")
 		$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
 		
+func _on_aggro_range_exited(body):
+	if body == chased_target:
+		chased_target = null
+		_set_navigation_target(global_position)
+		if nav_agent.avoidance_enabled:
+			nav_agent.set_velocity(Vector3.ZERO)
+		else:
+			_on_velocity_computed(Vector3.ZERO)
+		#$monster/AnimationPlayer.play("starting")
+		#$monster/AnimationPlayer.animation_finished.connect(_on_starting_animation_finished)
+		
 func _on_starting_animation_finished(anim_name):
 	if anim_name == "starting" or "attacking" or "blocking":
 		get_node("Health").is_blocking = false
@@ -118,14 +143,15 @@ func launch_character(launch_velocity, _allow_air_control = true):
 	velocity = launch_velocity
 
 func _on_died():
-	is_dead = true
-	$monster/AnimationPlayer.animation_finished.disconnect(_on_starting_animation_finished)
-	if has_node("DamageArea"):
-		var damage_area = get_node("DamageArea")
-		damage_area.set_deferred("monitoring", false)
-		damage_area.set_deferred("monitorable", false)
-		velocity = Vector3.ZERO
-		$monster/AnimationPlayer.play("dying")
+	print("Hello")
+	#is_dead = true
+	#$monster/AnimationPlayer.animation_finished.disconnect(_on_starting_animation_finished)
+	#if has_node("DamageArea"):
+		#var damage_area = get_node("DamageArea")
+		#damage_area.set_deferred("monitoring", false)
+		#damage_area.set_deferred("monitorable", false)
+		#velocity = Vector3.ZERO
+		#$monster/AnimationPlayer.play("dying")
 
 func _health_changed(health, delta, max_health):
 	print("Health changed:", health, delta, max_health)
