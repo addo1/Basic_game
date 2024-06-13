@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkfde07dqwqt5"]
+[gd_scene load_steps=3 format=3 uid="uid://xdyv38anasm4"]
 
 [sub_resource type="Animation" id="Animation_p3n5t"]
 resource_name = "show_plus"
@@ -64,7 +64,8 @@ _data = {
 "show_plus": SubResource("Animation_p3n5t")
 }
 
-[node name="Plus_animation_1" type="Node2D"]
+[node name="show_5minutes" type="Node2D"]
+visible = false
 
 [node name="show_plus" type="AnimationPlayer" parent="."]
 libraries = {
@@ -74,22 +75,25 @@ libraries = {
 [node name="BisonText2" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BisonText2"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_left = 0.973
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -506.44
-offset_top = -409.0
-offset_right = -506.0
-offset_bottom = -381.0
+modulate = Color(1, 1, 1, 0.5)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -88.0
+offset_right = -6.0
+offset_bottom = 3.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+scale = Vector2(1.96032, 2.23192)
+size_flags_horizontal = 4
 
 [node name="TextEdit" type="Label" parent="BisonText2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 31
-text = "+1"
+text = "5 MINUTES 
+TO SURVIVE"
 horizontal_alignment = 1

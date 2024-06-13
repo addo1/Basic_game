@@ -20,6 +20,8 @@ func start_fps_level():
 	await get_tree().create_timer(7.0).timeout
 	var scene = load("res://scenes/example_levels/fps_level.tscn")
 	get_parent().load_scene_and_set_current(scene)
+	var animation_player = get_node("/root/Game/FPSLevel/show_5minutes/show_plus")
+	animation_player.play("show_plus")
 
 
 func exit_game():

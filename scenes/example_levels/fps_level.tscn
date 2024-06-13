@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=73 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://dkfde07dqwqt5" path="res://scenes/node_2d.tscn" id="43_yb823"]
 [ext_resource type="PackedScene" uid="uid://chttnnopy5qra" path="res://scenes/plus_animation_10.tscn" id="44_s0twu"]
 [ext_resource type="PackedScene" uid="uid://btholbapk7pxn" path="res://scenes/plus_animation_100.tscn" id="45_m2dub"]
+[ext_resource type="PackedScene" uid="uid://xdyv38anasm4" path="res://scenes/show_5_minutes.tscn" id="46_kp4yx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8s7u3"]
 panorama = ExtResource("2_8wknx")
@@ -4286,9 +4287,9 @@ stream = ExtResource("38_qvb0l")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("health_node")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.182031
+anchor_right = 0.839063
 offset_left = -41.0
 offset_right = 41.0
 offset_bottom = 48.0
@@ -4328,6 +4329,8 @@ vertical_alignment = 1
 [node name="Plus_animation_10" parent="." instance=ExtResource("44_s0twu")]
 
 [node name="Plus_animation_100" parent="." instance=ExtResource("45_m2dub")]
+
+[node name="show_5minutes" parent="." instance=ExtResource("46_kp4yx")]
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]
