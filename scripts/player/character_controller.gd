@@ -5,6 +5,8 @@ class_name PlayerCharacter
 # default gravity value
 var GRAVITY = 9.8
 
+var minus = false
+
 # the node that tells which direction the player is facing
 # typically it's the camera and is the child of this node
 @export var direction_driver : Node3D
@@ -55,6 +57,9 @@ func _physics_process(delta):
 	#calculate target velocity and frame delta velocity
 	var target_velocity = (world_forward_direction * input_vector.y + world_right_direction * input_vector.x) * max_speed
 	if is_dead:
+		if not minus:
+			get_node("/root/Game/FPSLevel/FPSCharacter/CoinStash_score").score_in_stash = get_node("/root/Game/FPSLevel/FPSCharacter/CoinStash_score").score_in_stash * 0.8
+			minus = true
 		target_velocity = Vector3.ZERO
 	# calculate the delta of current horizontal velocity and the velocity we want to reach
 	var delta_velocity = target_velocity - xz_velocity
