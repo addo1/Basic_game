@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bir42a3mxbc0x"]
+[gd_scene load_steps=76 format=3 uid="uid://bir42a3mxbc0x"]
 
 [ext_resource type="Texture2D" uid="uid://fijypujghh8j" path="res://prefabs/map_assets/textures/night sky.jpg" id="2_8wknx"]
 [ext_resource type="AudioStream" uid="uid://dvqh7yhpvvvow" path="res://audio/sfx/ammo.ogg" id="2_aauvn"]
@@ -46,6 +46,9 @@
 [ext_resource type="PackedScene" uid="uid://chttnnopy5qra" path="res://scenes/plus_animation_10.tscn" id="44_s0twu"]
 [ext_resource type="PackedScene" uid="uid://btholbapk7pxn" path="res://scenes/plus_animation_100.tscn" id="45_m2dub"]
 [ext_resource type="PackedScene" uid="uid://xdyv38anasm4" path="res://scenes/show_5_minutes.tscn" id="46_kp4yx"]
+[ext_resource type="PackedScene" uid="uid://bxy58ust11iyt" path="res://scenes/show_3_minutes.tscn" id="47_tylx5"]
+[ext_resource type="PackedScene" uid="uid://cj63p83lp43ew" path="res://scenes/show_2_minutes.tscn" id="48_s8db3"]
+[ext_resource type="PackedScene" uid="uid://c5gnetcrj8k41" path="res://scenes/show_1_minute.tscn" id="49_w8ajp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8s7u3"]
 panorama = ExtResource("2_8wknx")
@@ -4331,6 +4334,12 @@ vertical_alignment = 1
 [node name="Plus_animation_100" parent="." instance=ExtResource("45_m2dub")]
 
 [node name="show_5minutes" parent="." instance=ExtResource("46_kp4yx")]
+
+[node name="show_3minutes" parent="." instance=ExtResource("47_tylx5")]
+
+[node name="show_2minutes" parent="." instance=ExtResource("48_s8db3")]
+
+[node name="show_1minutes" parent="." instance=ExtResource("49_w8ajp")]
 
 [connection signal="died" from="FPSCharacter/Health" to="LossTracker" method="trigger_loss"]
 [connection signal="died" from="Enemy/Health" to="VictoryTracker" method="trigger_victory"]

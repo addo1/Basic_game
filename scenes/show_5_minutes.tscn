@@ -89,6 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.96032, 2.23192)
 size_flags_horizontal = 4
+mouse_filter = 2
 
 [node name="TextEdit" type="Label" parent="BisonText2/VBoxContainer"]
 layout_mode = 2
