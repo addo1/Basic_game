@@ -289,7 +289,7 @@ theme_override_font_sizes/font_size = 30
 script = ExtResource("10_chl65")
 
 [node name="LandscapeMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5995, 0)
+transform = Transform3D(1, -3.0056e-12, 0, 1.59162e-12, 1, -5.82077e-11, 0, 0, 1, 0, -10.5995, 9.31323e-10)
 material_override = ExtResource("21_hxmkr")
 mesh = ExtResource("15_h6r6a")
 surface_material_override/0 = SubResource("StandardMaterial3D_k4p85")
@@ -4107,7 +4107,7 @@ spot_angle = 53.0064
 [node name="collectibles" type="Node" parent="."]
 
 [node name="Kaunascollectible" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 145.347, 2.27762, 86.4618)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, 145.347, 1.73172, 86.4618)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
@@ -4132,7 +4132,7 @@ omni_range = 1.984
 omni_attenuation = 0.435276
 
 [node name="Kaunascollectible3" parent="collectibles" instance=ExtResource("29_0sd8m")]
-transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, -135.822, -7.95392, -77.4936)
+transform = Transform3D(1, 6.33534e-05, -0.000196068, -6.3259e-05, 1, 0.000384627, 0.000196096, -0.00038461, 1.00001, -127.593, 22.4455, 86.9814)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("30_1m1bl")
@@ -4239,6 +4239,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.715, -0.636966, -88.8579
 [node name="Node3D" type="Node3D" parent="collectibles/ScoreCoin7"]
 
 [node name="Area3D" parent="collectibles/ScoreCoin7/Node3D" instance=ExtResource("35_xdpck")]
+transform = Transform3D(0.725445, 0, -0.68828, 0, 1, 0, 0.68828, 0, 0.725445, 34.0484, -5.86376, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="collectibles/ScoreCoin7"]
 
