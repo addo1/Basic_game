@@ -235,12 +235,19 @@ aggro_range = 16.0
 metadata/_edit_use_anchors_ = true
 
 [node name="timer_label" type="Label" parent="VictoryScreen"]
-visible = false
-layout_mode = 0
-offset_left = 586.0
-offset_top = 183.0
-offset_right = 709.0
-offset_bottom = 237.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -220.0
+offset_right = 62.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
 script = ExtResource("35_k2qku")
 
 [node name="Label" type="Label" parent="VictoryScreen"]
@@ -267,12 +274,19 @@ loss_screen = NodePath("../LossScreen")
 [node name="LossScreen" parent="." instance=ExtResource("14_fni2i")]
 
 [node name="timer_label" type="Label" parent="LossScreen"]
-visible = false
-layout_mode = 0
-offset_left = 586.0
-offset_top = 183.0
-offset_right = 709.0
-offset_bottom = 237.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -215.0
+offset_right = 62.0
+offset_bottom = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
 script = ExtResource("35_k2qku")
 
 [node name="Label" type="Label" parent="LossScreen"]
